@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_and_order/pages/login_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/menu_pages.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const IntroPage(),
+      home: LoginPage(),
       routes: {
         '/intro_page':(context) => const IntroPage(),
         '/menupage':(context) => const MenuPage(),
