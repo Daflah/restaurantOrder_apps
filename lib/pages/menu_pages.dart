@@ -25,11 +25,11 @@ class _MenuPageState extends State<MenuPage> {
           'WONDERFUL WESTERN EATING',
           style: TextStyle(color: Colors.grey[900]),
         ),
-        //appbar
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //promobanner
+          // promobanner
           Container(
             decoration: BoxDecoration(
               color: Colors.red,
@@ -39,10 +39,16 @@ class _MenuPageState extends State<MenuPage> {
             padding: const EdgeInsets.all(25),
             child: Row(
               children: [
-                // Get 32% Promo text
+                // Image next to "Get 32% Promo" text
+                Image.asset(
+                  'images/pasta.png', // Replace with the path to your image
+                  height: 50, // Adjust the height as needed
+                ),
+                const SizedBox(width: 20),
+                // Get 32% Promo text 
                 Expanded(
                   child: Text(
-                    'Get 32% Promo',
+                    'Get 40% Promo',
                     style: GoogleFonts.dmSerifDisplay(
                       fontSize: 20,
                       color: Colors.white,
@@ -58,11 +64,56 @@ class _MenuPageState extends State<MenuPage> {
               ],
             ),
           ),
-          //image
-          Image.asset(
-            'images/beef.png',
-            height: 100,
+          // image and text
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(
+              children: [
+                // Image
+                Image.asset(
+                  'images/beef.png',
+                  height: 100,
+                ),
+                const SizedBox(width: 20),
+                // Discount text
+                Text(
+                  'Special Offer!',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
           ),
+          const SizedBox(height: 25),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                enabledBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(20),)
+              ),
+            ),
+          ),
+          const SizedBox(height: 25),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Text("Food Menu",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey[800],fontSize: 18,),),
+          ),
+          const SizedBox(height: 10),
         ],
       ),
     );
