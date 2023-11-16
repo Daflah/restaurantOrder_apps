@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "607942952941",
+    "project_id": "restaurantandorder-edb77",
+    "storage_bucket": "restaurantandorder-edb77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607942952941:android:af78f866ff382644c589e4",
+        "android_client_info": {
+          "package_name": "com.example.restaurant_and_order"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJeFOQ1OqCzvohVS33zKj5XFqfe59_3jw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
