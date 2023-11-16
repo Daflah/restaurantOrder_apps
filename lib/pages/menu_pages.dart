@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_and_order/components/button.dart';
 import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
+import 'package:restaurant_and_order/models/signature.dart';
 
 import '../components/food_tile.dart';
 
@@ -14,6 +15,37 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  // signature menu
+  List signatureMenu = [
+    //Wagyu Beef Dry Aged x WWE
+    Signature(name: "Wagyu Beef Dry Aged x WWE", 
+    price: " 188.000", 
+    imagePath: "images/s_wagyu_beef_dry_aged.jpg", 
+    rating: "5.0" 
+    ),
+
+    //Cena Rib Eye with Tartar Sauce
+    Signature(name: "Cena Rib Eye with Tartar Sauce", 
+    price: " 178.000", 
+    imagePath: "images/autan.jpg ", 
+    rating: "4.9" 
+    ),
+
+    //Under "T"aker Bone Steak
+    Signature(name: "Under T-aker Bone Steak", 
+    price: " 208.000", 
+    imagePath: "images/led.jpg ", 
+    rating: "4.8" 
+    ),
+
+    //Shaky Shake Mysterio
+    Signature(name: "Shaky Shake Mysterio", 
+    price: " 36.000", 
+    imagePath: "images/ ", 
+    rating: "4.9" 
+    ),
+  ];
+
   // food menu
   List foodMenu = [
     // banger and mash
