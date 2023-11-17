@@ -4,6 +4,7 @@ import 'package:restaurant_and_order/components/button.dart';
 import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/signature.dart';
+import 'package:restaurant_and_order/pages/food_details_page.dart';
 
 import '../components/food_tile.dart';
 
@@ -118,7 +119,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Orange Juice",
       price: "18.000",
-      imagePath: "images/d_orange_juice.jpg",
+      imagePath: "images/d_orange_juice.jpeg",
       rating: "4.6",
     ),
     Drink(
@@ -179,7 +180,12 @@ class _MenuPageState extends State<MenuPage> {
 
   // navigate to food item details page
   void navigateToFoodDetails(int index) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) ==> FoodDetailsPage(),),);
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => FoodDetailsPage(
+          food: foodMenu[index],
+        ),
+      ),
+    );
   }
 
   @override
@@ -306,6 +312,7 @@ class _MenuPageState extends State<MenuPage> {
                 itemCount: foodMenu.length,
                 itemBuilder: (context, index) => FoodTile(
                   food: foodMenu[index],
+                  onTap: () => navigateToFoodDetails(index),
                 ),
               ),
             ),
@@ -373,11 +380,13 @@ class _MenuPageState extends State<MenuPage> {
                 itemBuilder: (context, index) => Container(
                   margin: EdgeInsets.all(8),
                   width: 150,
-                  color: Colors.blueGrey,
-                  child: Center(
-                    child: Text(
-                      drinkMenu[index].name,
-                      style: TextStyle(color: Colors.white),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      drinkMenu[index].imagePath,
+                      height: 150,
+                      width: 150,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
