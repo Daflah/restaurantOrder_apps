@@ -177,6 +177,11 @@ class _MenuPageState extends State<MenuPage> {
     ),
   ];
 
+  // navigate to food item details page
+  void navigateToFoodDetails(int index) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) ==> FoodDetailsPage(),),);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
