@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_and_order/components/button.dart';
@@ -9,7 +10,9 @@ import 'package:restaurant_and_order/pages/food_details_page.dart';
 import '../components/food_tile.dart';
 
 class MenuPage extends StatefulWidget {
-  const MenuPage({Key? key}) : super(key: key);
+  MenuPage({Key? key}) : super(key: key);
+
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   State<MenuPage> createState() => _MenuPageState();
@@ -188,11 +191,20 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 
+  // sign user out method
+  void signUserOut(){
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: signUserOut, 
+            icon: const Icon(Icons.logout))],
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Icon(
@@ -204,6 +216,7 @@ class _MenuPageState extends State<MenuPage> {
           style: TextStyle(color: Colors.grey[900]),
         ),
       ),
+      
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,7 +269,7 @@ class _MenuPageState extends State<MenuPage> {
                     height: 100,
                   ),
                   const SizedBox(width: 20),
-                  Text(
+                  const Text(
                     'Special Offer!',
                     style: TextStyle(fontSize: 18),
                   ),
@@ -272,15 +285,15 @@ class _MenuPageState extends State<MenuPage> {
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),

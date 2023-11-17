@@ -4,20 +4,85 @@ import 'package:restaurant_and_order/components/button_login.dart';
 import 'package:restaurant_and_order/components/my_textfield.dart';
 import 'package:restaurant_and_order/components/square_tile.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   //text editing controller
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   //sign user in
   void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+
+    //show loading cicrle
+    showDialog(context: context, 
+    builder: (context) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    },
+  );
+
+    //try sign in
+    try{
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: emailController.text, 
       password: passwordController.text,
     );
+    // pop the loading circle
+    Navigator.pop(context);
+
+    } on FirebaseAuthException catch (e){
+
+      // pop the loading circle
+      Navigator.pop(context);
+
+      //WRONG EMAIL
+      if (e.code == 'user-not-found'){
+        //show error to user
+        wrongEmailMessage();
+        
+      } 
+      
+      //WRONG PASSWORD
+      else if (e.code == 'wrong-password'){
+        //show error to user
+        wrongPasswordMessage();
+        
+      }
+    }
   }
+
+  //wrong email message popup
+  void wrongEmailMessage(){
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect Email'),
+        );
+      },
+    );
+  }
+
+  //wrong password message popup
+  void wrongPasswordMessage(){
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect Password'),
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
