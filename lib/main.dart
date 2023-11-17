@@ -1,12 +1,10 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_and_order/pages/auth_page.dart';
-// import 'package:restaurant_and_order/firebase_options.dart';
+import 'package:restaurant_and_order/firebase_options.dart';
 import 'package:restaurant_and_order/pages/login_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/menu_pages.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 
 void main() async {
