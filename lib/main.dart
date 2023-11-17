@@ -3,7 +3,6 @@ import 'package:restaurant_and_order/pages/login_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/menu_pages.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
