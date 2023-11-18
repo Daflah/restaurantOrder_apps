@@ -95,8 +95,10 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
                   const SizedBox(height: 10),
 
+
+                  
                   Text(
-                    "nih tulisan deskripsinya ye nanti tulis disini lesgo bray",
+                    widget.food.description,           
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontSize: 14,
@@ -192,3 +194,4 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     );
   }
 }
+
