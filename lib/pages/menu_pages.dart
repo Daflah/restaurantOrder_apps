@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
 import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
@@ -47,80 +48,7 @@ class _MenuPageState extends State<MenuPage> {
     ),
   ];
 
-  // Food menu
-  List<Food> foodMenu = [
-Food(
-  name: "Banger and Mash",
-  price: "45.000",
-  imagePath: "images/m_banger_and_mash.jpg",
-  rating: "4.5",
-  description: "deskripsi Banger and Mash",
-),
-Food(
-  name: "Burger Cang",
-  price: "28.000",
-  imagePath: "images/m_burger.jpg",
-  rating: "4.6",
-  description: "deskripsi Burger Cang", // Tambahkan deskripsi
-), 
-Food(
-  name: "Caesar Salad",
-  price: "23.000",
-  imagePath: "images/m_caesar_salad.jpg",
-  rating: "4.6",
-  description: "deskripsi caesar salad"
-),
-Food(
-  name: "Chicken Cordon Blue",
-  price: "23.000",
-  imagePath: "images/m_chicken_cordon_blue.jpg",
-  rating: "4.6",
-  description: "deskripsi Chicken Cordon Blue"
-),
-Food(
-  name: "Chicken Parmesan",
-  price: "23.000",
-  imagePath: "images/m_chicken_parmesan.jpg",
-  rating: "4.6",
-  description: "deskripsi Chicken Parmesan"
-),
-Food(
-  name: "Lasagna",
-  price: "23.000",
-  imagePath: "images/m_lasagna.jpg",
-  rating: "4.6",
-  description: "deskripsi Lasagna"
-),
-Food(
-  name: "Potluck Mac and Cheese",
-  price: "23.000",
-  imagePath: "images/m_potluck_mac_and_cheese.jpg",
-  rating: "4.6",
-  description: "deskripsi Potluck Mac and Cheese"
-),
-Food(
-  name: "Ratatouille",
-  price: "23.000",
-  imagePath: "images/m_ratatouille.jpg",
-  rating: "4.6",
-  description: "deskripsi Ratatouille"
-),
-Food(
-  name: "Spaetzle",
-  price: "23.000",
-  imagePath: "images/m_spaetzle.jpg",
-  rating: "4.6",
-  description: "deskripsi Spaetzle"
-),
-Food(
-  name: "Steak",
-  price: "23.000",
-  imagePath: "images/m_steak.jpg",
-  rating: "4.6",
-  description: "deskripsi Steak"
-),
-  ];
-
+ 
   // Drink Menu
   List<Drink> drinkMenu = [
     Drink(
@@ -193,6 +121,10 @@ Food(
 
   // navigate to food item details page
   void navigateToFoodDetails(int index) {
+    //get the shop and it's menu
+    final shop = context.read<shop>();
+    final foodMenu = shop.foodMenu;
+
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => FoodDetailsPage(
           food: foodMenu[index],

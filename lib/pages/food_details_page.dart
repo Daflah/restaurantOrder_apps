@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
+import 'package:restaurant_and_order/models/shop.dart';
 import '../models/food.dart';
 
 class FoodDetailsPage extends StatefulWidget {
@@ -33,7 +35,38 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
   }
 
   // add to cart
-  void addToCart() {}
+  void addToCart() {
+    //only add ti cart if there is something in the cart
+    if (quantityCount > 0){
+      //get access to shop
+      final shop = context.read<shop>()
+
+      //add to cart
+      shop.addToCart(widget.food, quantitycount);
+
+      //let the user know successful
+      showDialog(context: context,
+      barrierDismissible: false, 
+      builder: (context) => AlertDialog(
+        backgroundColor: primaeyColor,
+        content: const Text("successfully added to cart"),
+        style: TextStyle Color, color,white
+        actions: [
+          //okay button
+          IconButton(onPressed: () {
+          
+          //pap once to remove dialog
+          Navigator.pop(context);
+          //pap again to previous screen
+          Navigator.pop(context);
+          }
+          , icon: Icon(Icons,done),
+          )
+        ],
+      ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,8 +144,11 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
           ),
 
           // price + quantity + add to cart button
-          Container(
-            color: const Color.fromARGB(255, 162, 14, 14),
+         Container(
+  decoration: BoxDecoration(
+    color: const Color.fromARGB(255, 162, 14, 14),
+    borderRadius: BorderRadius.circular(10), // Mengatur radius
+  ),
             padding: const EdgeInsets.all(25),
             child: Column(
               children: [
@@ -132,6 +168,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
                     // quantity
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // minus button
                         Container(
