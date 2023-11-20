@@ -4,6 +4,8 @@ class Food {
   final String imagePath;
   final String rating;
   final String description;
+
+
   Food({
     required this.name,
     required this.price,

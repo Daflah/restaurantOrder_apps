@@ -36,31 +36,33 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
   // add to cart
   void addToCart() {
-    //only add ti cart if there is something in the cart
+    //only add to cart if there is something in the cart
     if (quantityCount > 0){
       //get access to shop
-      final shop = context.read<shop>()
+      final shop = context.read<Shop>();
 
       //add to cart
-      shop.addToCart(widget.food, quantitycount);
+      shop.addToCart(widget.food, quantityCount);
 
       //let the user know successful
       showDialog(context: context,
       barrierDismissible: false, 
       builder: (context) => AlertDialog(
-        backgroundColor: primaeyColor,
-        content: const Text("successfully added to cart"),
-        style: TextStyle Color, color,white
+        backgroundColor: Colors.red,
+        content: const Text("successfully added to cart" ,style: TextStyle (color: Colors.white),textAlign: TextAlign.center,
+        ),
+        
         actions: [
           //okay button
-          IconButton(onPressed: () {
-          
+          IconButton(
+            onPressed: () {
           //pap once to remove dialog
           Navigator.pop(context);
           //pap again to previous screen
           Navigator.pop(context);
-          }
-          , icon: Icon(Icons,done),
+          },
+          icon: const Icon(Icons.done),color: Colors.white,
+          
           )
         ],
       ),
@@ -132,8 +134,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   
                   Text(
                     widget.food.description,           
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 0, 0, 0),
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 14,
                       height: 2,
                     ),
@@ -158,7 +160,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   children: [
                     // price
                     Text(
-                      "\$" + widget.food.price,
+                      "\$${widget.food.price}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -172,8 +174,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       children: [
                         // minus button
                         Container(
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 98, 6, 6),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 98, 6, 6),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -202,7 +204,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
                         // plus button
                         Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 121, 12, 12),
                             shape: BoxShape.circle,
                           ),

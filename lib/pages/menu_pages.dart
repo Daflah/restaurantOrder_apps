@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
 import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
+import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
 
@@ -48,6 +49,78 @@ class _MenuPageState extends State<MenuPage> {
     ),
   ];
 
+   final List <Food> _foodMenu = [
+Food(
+  name: "Banger and Mash",
+  price: "45.000",
+  imagePath: "images/m_banger_and_mash.jpg",
+  rating: "4.5",
+  description: "Traditional British comfort food! Savor the flavors of savory sausages atop a bed of creamy mashed potatoes, all drizzled with rich onion gravy. A hearty and satisfying dish.",
+),
+Food(
+  name: "Burger Cang",
+  price: "28.000",
+  imagePath: "images/m_burger.jpg",
+  rating: "4.6",
+  description: "A classic delight! Our Burger Cang features a juicy, hand-smashed beef patty topped with crisp lettuce, ripe tomatoes, and your favorite condiments, all embraced by a toasted bun. A simple yet delicious experience. ", // Tambahkan deskripsi
+), 
+Food(
+  name: "Caesar Salad",
+  price: "23.000",
+  imagePath: "images/m_caesar_salad.jpg",
+  rating: "4.6",
+  description: "Crisp romaine lettuce tossed in creamy Caesar dressing, adorned with crunchy croutons and a sprinkle of Parmesan cheese. A timeless salad that's both refreshing and satisfying."
+),
+Food(
+  name: "Chicken Cordon Blue",
+  price: "23.000",
+  imagePath: "images/m_chicken_cordon_blue.jpg",
+  rating: "4.6",
+  description: "Tender chicken breast wrapped around ham and Swiss cheese, lightly breaded and baked to golden perfection. Served with a side of creamy signature WWE sauce, it's a classic combination that never disappoints."
+),
+Food(
+  name: "Chicken Parmesan",
+  price: "23.000",
+  imagePath: "images/m_chicken_parmesan.jpg",
+  rating: "4.6",
+  description: "Crispy breaded chicken smothered in marinara sauce and melted mozzarella cheese."
+),
+Food(
+  name: "Lasagna",
+  price: "23.000",
+  imagePath: "images/m_lasagna.jpg",
+  rating: "4.6",
+  description: "Layers of lasagna pasta, rich meat sauce, and melted mozzarella, all baked to perfection. A hearty and flavorful dish that's a timeless crowd-pleaser. Feels like in Italy Mamamia lezatos."
+),
+Food(
+  name: "Potluck Mac and Cheese",
+  price: "23.000",
+  imagePath: "images/m_potluck_mac_and_cheese.jpg",
+  rating: "4.6",
+  description: "Creamy and cheesy, our macaroni and cheese is a potluck favorite. Elbow macaroni coated in a velvety cheese sauce, baked to a golden brown crust. A comforting classic that brings everyone to the table and the most comforting to be in a dinner with your couple AWW."
+),
+Food(
+  name: "Ratatouille",
+  price: "23.000",
+  imagePath: "images/m_ratatouille.jpg",
+  rating: "4.6",
+  description: "A medley of colorful vegetables, including eggplant, zucchini, and bell peppers, cooked to tender perfection in a flavorful tomato sauce. A wholesome and delicious option for vegetarians. Taste same like in a movie of ratatouille but human made deliciouso."
+),
+Food(
+  name: "Spaetzle",
+  price: "23.000",
+  imagePath: "images/m_spaetzle.jpg",
+  rating: "4.6",
+  description: "Soft, pillowy German egg noodles, lightly browned for a comforting bite. Served with a choice of rich gravy or melted butter, our spaetzle is a delightful taste of European comfort. "
+),
+Food(
+  name: "Steak",
+  price: "23.000",
+  imagePath: "images/m_steak.jpg",
+  rating: "4.6",
+  description: "Juicy and tender US steak WWE choices, grilled to perfection. Served with your choice of side, our steak is a hearty and satisfying dish that promises a mouthful of bold, savory flavors."
+),
+  ];
  
   // Drink Menu
   List<Drink> drinkMenu = [
@@ -122,7 +195,7 @@ class _MenuPageState extends State<MenuPage> {
   // navigate to food item details page
   void navigateToFoodDetails(int index) {
     //get the shop and it's menu
-    final shop = context.read<shop>();
+    final shop = context.read<Shop>();
     final foodMenu = shop.foodMenu;
 
     Navigator.push(context,
@@ -142,11 +215,17 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
+      
       appBar: AppBar(
         actions: [
           IconButton(
             onPressed: signUserOut, 
-            icon: const Icon(Icons.logout))],
+            icon: const Icon(Icons.logout),),
+          IconButton(onPressed: (){Navigator.pushNamed(context, '/cartpage');
+          }, icon: const Icon(Icons.shopping_cart)
+          ,
+          ),
+          ],
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Icon(
@@ -157,6 +236,7 @@ class _MenuPageState extends State<MenuPage> {
           'WONDERFUL WESTERN EATING',
           style: TextStyle(color: Colors.grey[900]),
         ),
+      
       ),
       
       body: SingleChildScrollView(
@@ -264,9 +344,9 @@ class _MenuPageState extends State<MenuPage> {
               height: 300,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: foodMenu.length,
+                itemCount: _foodMenu.length,
                 itemBuilder: (context, index) => FoodTile(
-                  food: foodMenu[index],
+                  food: _foodMenu[index],
                   onTap: () => navigateToFoodDetails(index),
                 ),
               ),
