@@ -3,12 +3,14 @@ class Drink {
   String price;
   String imagePath;
   String rating;
+  String description;
 
-  Drink ({
+  Drink({
     required this.name,
     required this.price,
     required this.imagePath,
     required this.rating,
+    required this.description,
   });
 
   String get _name => name;
