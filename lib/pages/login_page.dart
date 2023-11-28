@@ -12,22 +12,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  
   //text editing controller
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   //sign user in
   void signUserIn() async {
 
     //show loading cicrle
-    showDialog(context: context, 
-    builder: (context) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    },
-  );
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
 
     //try sign in
     try{
