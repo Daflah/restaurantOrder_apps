@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
-import 'package:restaurant_and_order/components/signature_tile.dart';
+// import 'package:restaurant_and_order/components/signature_tile.dart';
 import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
