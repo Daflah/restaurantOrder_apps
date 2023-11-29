@@ -10,6 +10,7 @@ import 'package:restaurant_and_order/pages/login_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/menu_pages.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -22,6 +23,7 @@ void main() async {
       child: const MyApp(),
     ),
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
