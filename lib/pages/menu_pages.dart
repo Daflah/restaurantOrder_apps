@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
+import 'package:restaurant_and_order/components/signature_tile.dart';
 import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
@@ -10,6 +11,8 @@ import 'package:restaurant_and_order/models/signature.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
 
 import '../components/food_tile.dart';
+import '../components/drink_tile.dart';
+import '../components/signature_tile.dart';
 
 class MenuPage extends StatefulWidget {
   MenuPage({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Wagyu Beef Dry Aged x WWE",
       price: "188.000",
-      imagePath: "images/s_wagyu_beef_dry_aged.jpg",
+      imagePath: "images/pasta.png",
       rating: "5.0",
       description:
           "VIP ONLY!!! The Premium dry aged wagyu A5 beef with special secret WWE sauce made exclusively for the VIP served specially.",
@@ -34,7 +37,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Cena Rib Eye with Tartar Sauce",
       price: "178.000",
-      imagePath: "images/autan.jpg",
+      imagePath: "images/pasta.png",
       rating: "4.9",
       description:
           "John Cena eat this?!! Tasty tender US rib eye premium beef grilled perfectly well comes with special tartar sauce feels like john cena.",
@@ -42,7 +45,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Under T-aker Bone Steak",
       price: "208.000",
-      imagePath: "images/led.jpg",
+      imagePath: "images/pasta.png",
       rating: "4.8",
       description:
           "Champions only! T-Bone beef steak marinated by signature WWE sauce with smoky flavour and delicious tender meat.",
@@ -50,7 +53,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Shaky Shake Mysterio",
       price: "36.000",
-      imagePath: "images/placeholder.jpg",
+      imagePath: "images/pasta.png",
       rating: "4.9",
       description:
           "Mysterio? some mysterious mix of ingredients special for WWE feel fresh and sweet milkshake make your day feel free and mysterious.",
@@ -356,7 +359,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 50),
 
             // Food menu header
             Padding(
@@ -404,21 +407,33 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             // Signature menu list
+            // Container(
+            //   height: 300,
+            //   child: ListView.builder(
+            //     scrollDirection: Axis.horizontal,
+            //     itemCount: signatureMenu.length,
+            //     itemBuilder: (context, index) => FoodTile(
+            //       margin: EdgeInsets.all(8),
+            //       width: 150,
+            //       color: Colors.orange,
+            //       child: Center(
+            //         child: Text(
+            //           signatureMenu[index].name,
+            //           style: TextStyle(color: Colors.white),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+
             Container(
               height: 300,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: signatureMenu.length,
-                itemBuilder: (context, index) => Container(
-                  margin: EdgeInsets.all(8),
-                  width: 150,
-                  color: Colors.orange,
-                  child: Center(
-                    child: Text(
-                      signatureMenu[index].name,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                itemCount: _foodMenu.length,
+                itemBuilder: (context, index) => SignatureTile(
+                  signature: signatureMenu[index],
+                  onTap: () => navigateToFoodDetails(index),
                 ),
               ),
             ),
@@ -445,19 +460,10 @@ class _MenuPageState extends State<MenuPage> {
               height: 300,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: drinkMenu.length,
-                itemBuilder: (context, index) => Container(
-                  margin: EdgeInsets.all(8),
-                  width: 150,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      drinkMenu[index].imagePath,
-                      height: 150,
-                      width: 150,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                itemCount: _foodMenu.length,
+                itemBuilder: (context, index) => DrinkTile(
+                  drink: drinkMenu[index],
+                  onTap: () => navigateToFoodDetails(index),
                 ),
               ),
             ),
