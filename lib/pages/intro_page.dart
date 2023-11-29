@@ -58,7 +58,7 @@ class IntroPage extends StatelessWidget {
             text: "Login",
             onTap:() {
               //go to menu page or login page
-              Navigator.pushNamed(context, '/menupage');
+              Navigator.pushNamed(context, '/authpage');
             },
           )
       

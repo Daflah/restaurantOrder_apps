@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/food.dart';
+import '../models/signature.dart';
 
-class FoodTile extends StatelessWidget {
-  final Food food;
+class SignatureTile extends StatelessWidget {
+  final Signature signature;
   final void Function()? onTap; 
-  const FoodTile({
+  const SignatureTile({
     super.key,
-    required this.food,
+    required this.signature,
     required this.onTap,
   });
 
@@ -16,8 +16,6 @@ class FoodTile extends StatelessWidget {
     return GestureDetector(
       onTap:onTap ,
       child: Container(
-        width: 250,
-        height: 250,
         decoration: BoxDecoration(
           color: Colors.grey[100],
           borderRadius: BorderRadius.circular(20),
@@ -29,13 +27,13 @@ class FoodTile extends StatelessWidget {
           children: [
             //image
             Image.asset(
-              food.imagePath,
+              signature.imagePath,
               height: 140,
             ),
     
             //Text
             Text(
-              food.name,
+              signature.name,
               style: GoogleFonts.dmSerifDisplay(fontSize: 20),
             ),
     
@@ -47,7 +45,7 @@ class FoodTile extends StatelessWidget {
                 children: [
                   //Price
                   Text(
-                    '\Rp' + food.price, 
+                    '\Rp' + signature.price, 
                     style: TextStyle(
                       fontWeight: FontWeight.bold, 
                       color: Colors.grey[700]
@@ -62,7 +60,7 @@ class FoodTile extends StatelessWidget {
                     color: Colors.yellow[800],
                   ),
                   Text(
-                    food.rating, 
+                    signature.rating, 
                     style: TextStyle(color: Colors.grey),
                   ),
                     ],
