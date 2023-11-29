@@ -22,7 +22,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   // Signature menu
-  List<Signature> signatureMenu = [
+  final List<Signature> signatureMenu = [
     Signature(
       name: "Wagyu Beef Dry Aged x WWE",
       price: "188.000",
@@ -133,7 +133,7 @@ class _MenuPageState extends State<MenuPage> {
   ];
 
   // Drink Menu
-  List<Drink> drinkMenu = [
+  final List<Drink> drinkMenu = [
     Drink(
       name: "Avocado Juice",
       price: "18.000",
