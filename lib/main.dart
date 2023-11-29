@@ -9,8 +9,6 @@ import 'package:restaurant_and_order/pages/cart_page.dart';
 import 'package:restaurant_and_order/pages/login_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/menu_pages.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 
 void main() async {
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const AuthPage(),
+      home: const IntroPage(),
       routes: {
         '/intro_page': (context) => const IntroPage(),
         '/authpage': (context) => const AuthPage(),
