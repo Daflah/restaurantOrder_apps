@@ -38,7 +38,7 @@ Food(
 Food(
   name: "Chicken Parmesan",
   price: "23.000",
-  imagePath: "images/m_chicken_parmesan.jpg",
+  imagePath: "images/m_parmesan.jpg",
   rating: "4.6",
   description: "Crispy breaded chicken smothered in marinara sauce and melted mozzarella cheese."
 ),
@@ -52,7 +52,7 @@ Food(
 Food(
   name: "Potluck Mac and Cheese",
   price: "23.000",
-  imagePath: "images/m_potluck_mac_and_cheese.jpg",
+  imagePath: "images/m_potluck.jpg",
   rating: "4.6",
   description: "Creamy and cheesy, our macaroni and cheese is a potluck favorite. Elbow macaroni coated in a velvety cheese sauce, baked to a golden brown crust. A comforting classic that brings everyone to the table and the most comforting to be in a dinner with your couple AWW."
 ),
