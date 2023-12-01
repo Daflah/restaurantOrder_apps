@@ -9,6 +9,8 @@ import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:restaurant_and_order/pages/location_page.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -280,6 +282,7 @@ class _MenuPageState extends State<MenuPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            
             // Promo banner
             Container(
               decoration: BoxDecoration(
@@ -336,7 +339,43 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
+
+            // location bar
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: GestureDetector(
+                onTap: () {
+                },
+                child: Row(
+                  children: [
+                    const SizedBox(width: 20),
+                    FaIcon(
+                      FontAwesomeIcons.mapLocationDot,
+                      color: const Color(0xFFf60909),
+                    ),
+                    const SizedBox(width: 5),
+                    const Text(
+                      'Visit Our Location',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    const SizedBox(width: 6),
+                     MyButton(
+                    text: "Visit",
+                    onTap: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                  ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 35),
 
             // Search bar
             Padding(
