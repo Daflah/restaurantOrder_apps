@@ -140,7 +140,7 @@ class _MenuPageState extends State<MenuPage> {
   // Drink Menu
   final List<Drink> drinkMenu = [
     Drink(
-      name: "Avocado Juice",
+      name: "Avocado jus",
       price: "18.000",
       imagePath: "images/d_avocado_juice.jpg",
       rating: "4.7",
