@@ -10,6 +10,7 @@ import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:restaurant_and_order/pages/location_page.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -366,7 +367,9 @@ class _MenuPageState extends State<MenuPage> {
                     const SizedBox(width: 6),
                      MyButton(
                     text: "Visit",
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
                   ),
                   ],
                 ),
