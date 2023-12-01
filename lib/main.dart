@@ -1,4 +1,6 @@
 //import 'dart:js';
+import 'package:restaurant_and_order/pages/location_page.dart';
+
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/loginpage': (context) => const LoginPage(),
         '/menupage': (context) => MenuPage(),
         '/cartpage': (context) => const CartPage(),
+        '/location': (context) => Mylocation(),
       },
     );
   }
