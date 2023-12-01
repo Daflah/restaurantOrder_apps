@@ -64,7 +64,7 @@ class _MenuPageState extends State<MenuPage> {
 
   final List<Food> _foodMenu = [
     Food(
-      name: "Banger and Masuk",
+      name: "Banger and Mash",
       price: "45.000",
       imagePath: "images/m_banger_and_mash.jpg",
       rating: "4.5",
