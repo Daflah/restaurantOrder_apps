@@ -234,6 +234,7 @@ class _MenuPageState extends State<MenuPage> {
     //get the shop and it's menu
     final shop = context.read<Shop>();
     final foodMenu = shop.foodMenu;
+    
 
     Navigator.push(
       context,
@@ -244,6 +245,23 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
+
+// Navigate to drink item details page
+  // void navigateToDrinkDetails (int index) {
+  //   final shop = context.read<Shop>();
+  //   final drinkMenu = shop.drinkMenus;
+    
+
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => FoodDetailsPage(
+  //         food: foodMenu[index],
+  //       ),
+  //     ),
+  //   );
+
+  // }
 
   // sign user out method
   void signUserOut() {
@@ -284,7 +302,7 @@ class _MenuPageState extends State<MenuPage> {
           children: [
             
             // Promo banner
-            Container(
+     Container(
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
@@ -310,11 +328,37 @@ class _MenuPageState extends State<MenuPage> {
                   const SizedBox(width: 20),
                   MyButton(
                     text: "Redeem",
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.red,
+                          content: const Text(
+                            "You have reedem the promo!",
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          actions: [
+                            // okay button
+                            IconButton(
+                              onPressed: () {
+                                // Pop once to remove the dialog
+                                Navigator.pop(context);
+                                // Pop again to navigate to the previous screen
+                              },
+                              icon: const Icon(Icons.done),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
             ),
+
 
             // Special offer image and text
             Container(
@@ -499,7 +543,7 @@ class _MenuPageState extends State<MenuPage> {
               height: 300,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
+                itemCount: drinkMenu.length,
                 itemBuilder: (context, index) => DrinkTile(
                   drink: drinkMenu[index],
                   onTap: () => navigateToFoodDetails(index),
