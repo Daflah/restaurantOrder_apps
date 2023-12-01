@@ -9,6 +9,7 @@ import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -349,16 +350,20 @@ class _MenuPageState extends State<MenuPage> {
               ),
               child: GestureDetector(
                 onTap: () {
-                  // Navigate to the location page here
-                  // You can use Navigator.push or any other navigation method
                 },
                 child: Row(
                   children: [
                     const SizedBox(width: 20),
+                    FaIcon(
+                      FontAwesomeIcons.mapLocationDot,
+                      color: const Color(0xFFf60909),
+                    ),
+                    const SizedBox(width: 5),
                     const Text(
                       'Visit Our Location',
                       style: TextStyle(fontSize: 18),
                     ),
+                    const SizedBox(width: 6),
                      MyButton(
                     text: "Visit",
                     onTap: () {},
