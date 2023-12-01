@@ -31,7 +31,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Wagyu Beef Dry Aged x WWE",
       price: "188.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_wagyu_beef.jpg",
       rating: "5.0",
       description:
           "VIP ONLY!!! The Premium dry aged wagyu A5 beef with special secret WWE sauce made exclusively for the VIP served specially.",
@@ -39,7 +39,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Cena Rib Eye with Tartar Sauce",
       price: "178.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_cena_ribeye.jpg",
       rating: "4.9",
       description:
           "John Cena eat this?!! Tasty tender US rib eye premium beef grilled perfectly well comes with special tartar sauce feels like john cena.",
@@ -47,7 +47,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Under T-aker Bone Steak",
       price: "208.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_under_Taker_Bone.jpg",
       rating: "4.8",
       description:
           "Champions only! T-Bone beef steak marinated by signature WWE sauce with smoky flavour and delicious tender meat.",
@@ -55,7 +55,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Shaky Shake Mysterio",
       price: "36.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_shaky_shake.jpg",
       rating: "4.9",
       description:
           "Mysterio? some mysterious mix of ingredients special for WWE feel fresh and sweet milkshake make your day feel free and mysterious.",
@@ -96,7 +96,7 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: "Chicken Parmesan",
         price: "23.000",
-        imagePath: "images/m_chicken_parmesan.jpg",
+        imagePath: "images/m_Parmesan.jpg",
         rating: "4.6",
         description:
             "Crispy breaded chicken smothered in marinara sauce and melted mozzarella cheese."),
@@ -142,7 +142,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Avocado Juice",
       price: "18.000",
-      imagePath: "images/d_avocado_juice.jpeg",
+      imagePath: "images/d_avocado_juice.jpg",
       rating: "4.7",
       description:
           "Creamy and refreshing, Avocado Juice is a blend of ripe avocados, a hint of sweetness, and a splash of chilled goodness. A nourishing and satisfying beverage that's as indulgent as it is healthy, good for bulking, also WWE choices.",
@@ -198,7 +198,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Classic Milk Tea",
       price: "23.000",
-      imagePath: "images/d_classic_milk_tea.jpg",
+      imagePath: "images/d_classic_milkshake.jpg",
       rating: "4.6",
       description:
           "Embrace the comforting warmth feels like in mama’s hug. Perfectly brewed black tea meets velvety milk, creating a harmonious balance of flavors that's both nostalgic and delightful.",
@@ -206,7 +206,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Matcha Milk Tea",
       price: "24.000",
-      imagePath: "images/d_matcha_milk_tea.jpg",
+      imagePath: "images/d_matcha_milktea.jpg",
       rating: "4.8",
       description:
           "Experience the vibrant green goodness of our Matcha Milk Tea. High-quality matcha powder only can bought by WWE, meets smooth milk for a beverage that's both energizing and soothing. A perfect blend of tradition and innovation in every sip.",
@@ -214,7 +214,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Taro Milk Tea",
       price: "24.000",
-      imagePath: "images/d_taro_milk_tea.jpg",
+      imagePath: "images/d_taro_milkshake.jpg",
       rating: "4.5",
       description:
           "A unique twist on tradition! Our Taro Milk Tea features the rich, earthy flavor of taro combined with the creamy goodness of milk tea. A delicious and exotic choice for those seeking something different.",
