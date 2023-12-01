@@ -280,6 +280,7 @@ class _MenuPageState extends State<MenuPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            
             // Promo banner
             Container(
               decoration: BoxDecoration(
@@ -336,7 +337,37 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
+
+            // location bar
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to the location page here
+                  // You can use Navigator.push or any other navigation method
+                },
+                child: Row(
+                  children: [
+                    const SizedBox(width: 20),
+                    const Text(
+                      'Visit Our Location',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                     MyButton(
+                    text: "Visit",
+                    onTap: () {},
+                  ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 35),
 
             // Search bar
             Padding(
