@@ -8,9 +8,11 @@ import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
+import 'package:restaurant_and_order/pages/drink_details_page.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:restaurant_and_order/pages/location_page.dart';
+import 'package:restaurant_and_order/pages/signature_details_page.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -234,6 +236,7 @@ class _MenuPageState extends State<MenuPage> {
     //get the shop and it's menu
     final shop = context.read<Shop>();
     final foodMenu = shop.foodMenu;
+    
 
     Navigator.push(
       context,
@@ -244,6 +247,40 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
+
+// Navigate to drink item details page
+void navigateToDrinkDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final drinkMenu = shop.drinkMenus;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => DrinkDetailsPage(
+        drink: drinkMenu[index],
+      ),
+    ),
+  );
+}
+
+// Navigate to signature item details page
+void navigateToSignatureDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final signatureMenu = shop.signatureMenu;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SignatureDetailsPage(
+        signature: signatureMenu[index],
+      ),
+    ),
+  );
+}
+
+
 
   // sign user out method
   void signUserOut() {
@@ -274,7 +311,7 @@ class _MenuPageState extends State<MenuPage> {
           color: Colors.grey[900],
         ),
         title: Text(
-          'WONDERFUL WESTERN EATING',
+          'W.W.E',
           style: TextStyle(color: Colors.grey[900]),
         ),
       ),
@@ -282,9 +319,11 @@ class _MenuPageState extends State<MenuPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+          const SizedBox(height: 10),
             
-            // Promo banner
-            Container(
+          // Promo banner
+          Container(
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
@@ -310,11 +349,38 @@ class _MenuPageState extends State<MenuPage> {
                   const SizedBox(width: 20),
                   MyButton(
                     text: "Redeem",
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.red,
+                          content: const Text(
+                            "You have reedem the promo!",
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          actions: [
+                            // okay button
+                            IconButton(
+                              onPressed: () {
+                                // Pop once to remove the dialog
+                                Navigator.pop(context);
+                                // Pop again to navigate to the previous screen
+                              },
+                              icon: const Icon(Icons.done),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
             ),
+
+            const SizedBox(height: 10),
 
             // Special offer image and text
             Container(
@@ -342,40 +408,41 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 5),
 
             // location bar
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                },
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
+                padding: const EdgeInsets.all(21),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Row(
                   children: [
-                    const SizedBox(width: 20),
-                    FaIcon(
-                      FontAwesomeIcons.mapLocationDot,
-                      color: const Color(0xFFf60909),
-                    ),
                     const SizedBox(width: 5),
+                    const FaIcon(
+                      FontAwesomeIcons.mapLocationDot,
+                      color: Color(0xFFf60909),
+                    ),
+                    const SizedBox(width: 10),
                     const Text(
                       'Visit Our Location',
                       style: TextStyle(fontSize: 18),
                     ),
                     const SizedBox(width: 6),
-                     MyButton(
-                    text: "Visit",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/location');
-                    },
-                  ),
+                    MyButton(
+                      text: "Visit",
+                      onTap: () {
+                        Navigator.pushNamed(context, '/location');
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 35),
+
+
+            const SizedBox(height: 25),
 
             // Search bar
             Padding(
@@ -446,17 +513,18 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             //signature menu list
-            Container(
-              height: 300,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: signatureMenu.length,
-                itemBuilder: (context, index) => SignatureTile(
-                  signature: signatureMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: signatureMenu.length,
+                  itemBuilder: (context, index) => SignatureTile(
+                    signature: signatureMenu[index],
+                    onTap: () => navigateToSignatureDetails(index),
+                  ),
                 ),
               ),
-            ),
+
 
             const SizedBox(height: 50),
 
@@ -476,14 +544,15 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             // Drink menu list
+            // Drink menu list
             Container(
-              height: 300,
-              child: ListView.builder(
+                height: 300,
+                child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
+                itemCount: drinkMenu.length,
                 itemBuilder: (context, index) => DrinkTile(
-                  drink: drinkMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+                drink: drinkMenu[index],
+                onTap: () => navigateToDrinkDetails(index), // Uncomment this line
                 ),
               ),
             ),
