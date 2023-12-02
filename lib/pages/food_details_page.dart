@@ -145,26 +145,26 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
           // price + quantity + add to cart button
          Container(
-  decoration: BoxDecoration(
-    color: const Color.fromARGB(255, 162, 14, 14),
-    borderRadius: BorderRadius.circular(10), // Mengatur radius
-  ),
-            padding: const EdgeInsets.all(25),
-            child: Column(
-              children: [
-                // price + quantity
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // price
-                    Text(
-                      "\$${widget.food.price}",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 162, 14, 14),
+            borderRadius: BorderRadius.circular(10), // Mengatur radius
+          ),
+                    padding: const EdgeInsets.all(25),
+                    child: Column(
+                      children: [
+                        // price + quantity
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // price
+                            Text(
+                              "\Rp${widget.food.price}",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
 
                     // quantity
                     Row(

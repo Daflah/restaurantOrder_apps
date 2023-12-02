@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
-import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import '../models/signature.dart';
 
 class SignatureDetailsPage extends StatefulWidget {
   final Signature signature;
 
-  const SignatureDetailsPage({Key? key, required this.signature});
+  const SignatureDetailsPage({super.key, required this.signature});
 
   @override
   State<SignatureDetailsPage> createState() => _SignatureDetailsPageState();
@@ -33,7 +32,7 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
   void addToCart() {
     if (quantityCount > 0) {
       final shop = context.read<Shop>();
-      shop.addToCart(widget.signature as Food, quantityCount);
+      shop.addToCart3(widget.signature, quantityCount);
 
       showDialog(
         context: context,
@@ -136,7 +135,7 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "\$${widget.signature.price}",
+                      "\Rp${widget.signature.price}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

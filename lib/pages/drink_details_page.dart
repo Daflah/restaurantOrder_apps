@@ -162,7 +162,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                   children: [
                     // price
                     Text(
-                      "\$${widget.drink.price}",
+                      "\Rp${widget.drink.price}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

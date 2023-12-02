@@ -246,7 +246,7 @@ Food(
     notifyListeners();
   }
   //remove from cart
-  void removeFromcart(Food food) {
+  void removeFromcart(Food food, Drink drink, Signature signature) {
     _cart.remove(food);
     notifyListeners();
    
