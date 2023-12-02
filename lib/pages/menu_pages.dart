@@ -8,9 +8,11 @@ import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
+import 'package:restaurant_and_order/pages/drink_details_page.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:restaurant_and_order/pages/location_page.dart';
+import 'package:restaurant_and_order/pages/signature_details_page.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -247,21 +249,38 @@ class _MenuPageState extends State<MenuPage> {
   }
 
 // Navigate to drink item details page
-  // void navigateToDrinkDetails (int index) {
-  //   final shop = context.read<Shop>();
-  //   final drinkMenu = shop.drinkMenus;
-    
+void navigateToDrinkDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final drinkMenu = shop.drinkMenus;
 
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => FoodDetailsPage(
-  //         food: drinkMenu[index],
-  //       ),
-  //     ),
-  //   );
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => DrinkDetailsPage(
+        drink: drinkMenu[index],
+      ),
+    ),
+  );
+}
 
-  // }
+// Navigate to signature item details page
+void navigateToSignatureDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final signatureMenu = shop.signatureMenu;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SignatureDetailsPage(
+        signature: signatureMenu[index],
+      ),
+    ),
+  );
+}
+
+
 
   // sign user out method
   void signUserOut() {
@@ -490,17 +509,18 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             //signature menu list
-            Container(
-              height: 300,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: signatureMenu.length,
-                itemBuilder: (context, index) => SignatureTile(
-                  signature: signatureMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: signatureMenu.length,
+                  itemBuilder: (context, index) => SignatureTile(
+                    signature: signatureMenu[index],
+                    onTap: () => navigateToSignatureDetails(index),
+                  ),
                 ),
               ),
-            ),
+
 
             const SizedBox(height: 50),
 
@@ -520,14 +540,15 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             // Drink menu list
+            // Drink menu list
             Container(
-              height: 300,
-              child: ListView.builder(
+                height: 300,
+                child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: drinkMenu.length,
                 itemBuilder: (context, index) => DrinkTile(
-                  drink: drinkMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+                drink: drinkMenu[index],
+                onTap: () => navigateToDrinkDetails(index), // Uncomment this line
                 ),
               ),
             ),

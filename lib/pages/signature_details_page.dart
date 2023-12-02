@@ -4,46 +4,37 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
-import '../models/drink.dart';
+import '../models/signature.dart';
 
-class DrinkDetailsPage extends StatefulWidget {
-  final Drink drink;
+class SignatureDetailsPage extends StatefulWidget {
+  final Signature signature;
 
-  const DrinkDetailsPage({super.key, required this.drink});
+  const SignatureDetailsPage({Key? key, required this.signature});
 
   @override
-  State<DrinkDetailsPage> createState() => _DrinkDetailsPageState();
+  State<SignatureDetailsPage> createState() => _SignatureDetailsPageState();
 }
 
-class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
-  // quantity
+class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
   int quantityCount = 0;
 
-  // decrement quantity
   void decrementQuantity() {
     setState(() {
       quantityCount--;
     });
   }
 
-  // increment quantity
   void incrementQuantity() {
     setState(() {
       quantityCount++;
     });
   }
 
-  // add to cart
   void addToCart() {
-    // only add to cart if there is something in the cart
     if (quantityCount > 0) {
-      // get access to shop
       final shop = context.read<Shop>();
+      shop.addToCart(widget.signature as Food, quantityCount);
 
-      // add to cart
-      shop.addToCart(widget.drink as Food, quantityCount);
-
-      // let the user know successful
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -55,12 +46,9 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
             textAlign: TextAlign.center,
           ),
           actions: [
-            // okay button
             IconButton(
               onPressed: () {
-                // Pop once to remove the dialog
                 Navigator.pop(context);
-                // Pop again to navigate to the previous screen
                 Navigator.pop(context);
               },
               icon: const Icon(Icons.done),
@@ -76,35 +64,32 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Customize AppBar properties as needed
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        // Add other AppBar properties as needed
       ),
       body: Column(
         children: [
-          // listview of drink details
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: ListView(
                 children: [
-                  // image
-                  Image.asset(widget.drink.imagePath, height: 200),
-
+                  Image.asset(widget.signature.imagePath, height: 200),
                   const SizedBox(height: 25),
-
-                  // rating
                   Row(
                     children: [
-                      // star icon
                       Icon(
                         Icons.star,
                         color: Colors.yellow[800],
                       ),
-
                       const SizedBox(width: 5),
-
-                      // rating number
                       Text(
-                        widget.drink.rating,
+                        widget.signature.rating,
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontWeight: FontWeight.bold,
@@ -112,18 +97,12 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 10),
-
-                  // drink name
                   Text(
-                    widget.drink.name,
+                    widget.signature.name,
                     style: GoogleFonts.dmSerifDisplay(fontSize: 28),
                   ),
-
                   const SizedBox(height: 25),
-
-                  // description
                   Text(
                     "Description",
                     style: TextStyle(
@@ -132,11 +111,9 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                       fontSize: 18,
                     ),
                   ),
-
                   const SizedBox(height: 10),
-
                   Text(
-                    widget.drink.description,
+                    widget.signature.description,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 14,
@@ -147,8 +124,6 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
               ),
             ),
           ),
-
-          // price + quantity + add to cart button
           Container(
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 162, 14, 14),
@@ -157,25 +132,20 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
             padding: const EdgeInsets.all(25),
             child: Column(
               children: [
-                // price + quantity
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // price
                     Text(
-                      "\$${widget.drink.price}",
+                      "\$${widget.signature.price}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
-
-                    // quantity
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // minus button
                         Container(
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 98, 6, 6),
@@ -189,8 +159,6 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                             onPressed: decrementQuantity,
                           ),
                         ),
-
-                        // quantity count
                         SizedBox(
                           width: 40,
                           child: Center(
@@ -204,8 +172,6 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                             ),
                           ),
                         ),
-
-                        // plus button
                         Container(
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 121, 12, 12),
@@ -223,10 +189,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 25),
-
-                // add to cart button
                 MyButton(text: "Add To Cart", onTap: addToCart),
               ],
             ),
