@@ -110,7 +110,7 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: "Potluck Mac and Cheese",
         price: "23.000",
-        imagePath: "images/m_potluck_mac_and_cheese.jpg",
+        imagePath: "images/m_portluck.jpg",
         rating: "4.6",
         description:
             "Creamy and cheesy, our macaroni and cheese is a potluck favorite. Elbow macaroni coated in a velvety cheese sauce, baked to a golden brown crust. A comforting classic that brings everyone to the table and the most comforting to be in a dinner with your couple AWW."),
@@ -140,7 +140,7 @@ class _MenuPageState extends State<MenuPage> {
   // Drink Menu
   final List<Drink> drinkMenu = [
     Drink(
-      name: "Avocado jus",
+      name: "Avocado juice",
       price: "18.000",
       imagePath: "images/d_avocado_juice.jpg",
       rating: "4.7",
@@ -489,31 +489,12 @@ class _MenuPageState extends State<MenuPage> {
 
             const SizedBox(height: 10),
 
-            // Signature menu list
-            // Container(
-            //   height: 300,
-            //   child: ListView.builder(
-            //     scrollDirection: Axis.horizontal,
-            //     itemCount: signatureMenu.length,
-            //     itemBuilder: (context, index) => FoodTile(
-            //       margin: EdgeInsets.all(8),
-            //       width: 150,
-            //       color: Colors.orange,
-            //       child: Center(
-            //         child: Text(
-            //           signatureMenu[index].name,
-            //           style: TextStyle(color: Colors.white),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
+            //signature menu list
             Container(
               height: 300,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
+                itemCount: signatureMenu.length,
                 itemBuilder: (context, index) => SignatureTile(
                   signature: signatureMenu[index],
                   onTap: () => navigateToFoodDetails(index),
