@@ -3,18 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
 import 'package:restaurant_and_order/models/shop.dart';
-import '../models/food.dart';
+import '../models/drink.dart';
 
-class FoodDetailsPage extends StatefulWidget {
-  final Food food;
+class DrinkDetailsPage extends StatefulWidget {
+  final Drink drink;
 
-  const FoodDetailsPage({super.key, required this.food});
+  const DrinkDetailsPage({super.key, required this.drink});
 
   @override
-  State<FoodDetailsPage> createState() => _FoodDetailsPageState();
+  State<DrinkDetailsPage> createState() => _DrinkDetailsPageState();
 }
 
-class _FoodDetailsPageState extends State<FoodDetailsPage> {
+class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
   // quantity
   int quantityCount = 0;
 
@@ -25,47 +25,48 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     });
   }
 
-  //increment quantity
+  // increment quantity
   void incrementQuantity() {
     setState(() {
-      setState(() {
-        quantityCount++;
-      });
+      quantityCount++;
     });
   }
 
   // add to cart
   void addToCart() {
-    //only add to cart if there is something in the cart
-    if (quantityCount > 0){
-      //get access to shop
+    // only add to cart if there is something in the cart
+    if (quantityCount > 0) {
+      // get access to shop
       final shop = context.read<Shop>();
 
-      //add to cart
-      shop.addToCart(widget.food, quantityCount);
+      // add to cart
+      shop.addToCart2(widget.drink, quantityCount);
 
-      //let the user know successful
-      showDialog(context: context,
-      barrierDismissible: false, 
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.red,
-        content: const Text("successfully added to cart" ,style: TextStyle (color: Colors.white),textAlign: TextAlign.center,
+      // let the user know successful
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.red,
+          content: const Text(
+            "Successfully added to cart",
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            // okay button
+            IconButton(
+              onPressed: () {
+                // Pop once to remove the dialog
+                Navigator.pop(context);
+                // Pop again to navigate to the previous screen
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.done),
+              color: Colors.white,
+            ),
+          ],
         ),
-        
-        actions: [
-          //okay button
-          IconButton(
-            onPressed: () {
-          //pap once to remove dialog
-          Navigator.pop(context);
-          //pap again to previous screen
-          Navigator.pop(context);
-          },
-          icon: const Icon(Icons.done),color: Colors.white,
-          
-          )
-        ],
-      ),
       );
     }
   }
@@ -74,18 +75,18 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // Isi properti AppBar seperti biasa
-          ),
+        // Customize AppBar properties as needed
+      ),
       body: Column(
         children: [
-          // listview of food details
+          // listview of drink details
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: ListView(
                 children: [
                   // image
-                  Image.asset(widget.food.imagePath, height: 200),
+                  Image.asset(widget.drink.imagePath, height: 200),
 
                   const SizedBox(height: 25),
 
@@ -102,7 +103,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
                       // rating number
                       Text(
-                        widget.food.rating,
+                        widget.drink.rating,
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontWeight: FontWeight.bold,
@@ -113,25 +114,28 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
                   const SizedBox(height: 10),
 
-                  // food name
+                  // drink name
                   Text(
-                    widget.food.name,
+                    widget.drink.name,
                     style: GoogleFonts.dmSerifDisplay(fontSize: 28),
                   ),
 
                   const SizedBox(height: 25),
 
                   // description
-                  Text("Description",
-                      style: TextStyle(
-                          color: Colors.grey[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18)),
+                  Text(
+                    "Description",
+                    style: TextStyle(
+                      color: Colors.grey[900],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
 
                   const SizedBox(height: 10),
-                  
+
                   Text(
-                    widget.food.description,           
+                    widget.drink.description,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 14,
@@ -144,11 +148,11 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
           ),
 
           // price + quantity + add to cart button
-         Container(
-  decoration: BoxDecoration(
-    color: const Color.fromARGB(255, 162, 14, 14),
-    borderRadius: BorderRadius.circular(10), // Mengatur radius
-  ),
+          Container(
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 162, 14, 14),
+              borderRadius: BorderRadius.circular(10),
+            ),
             padding: const EdgeInsets.all(25),
             child: Column(
               children: [
@@ -158,7 +162,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   children: [
                     // price
                     Text(
-                      "\$${widget.food.price}",
+                      "\$${widget.drink.price}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -221,7 +225,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
                 const SizedBox(height: 25),
 
-                //add to cart button
+                // add to cart button
                 MyButton(text: "Add To Cart", onTap: addToCart),
               ],
             ),
@@ -231,4 +235,3 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     );
   }
 }
-

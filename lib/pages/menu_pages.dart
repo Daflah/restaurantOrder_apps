@@ -8,7 +8,11 @@ import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
+import 'package:restaurant_and_order/pages/drink_details_page.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:restaurant_and_order/pages/location_page.dart';
+import 'package:restaurant_and_order/pages/signature_details_page.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -29,7 +33,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Wagyu Beef Dry Aged x WWE",
       price: "188.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_wagyu_beef.jpg",
       rating: "5.0",
       description:
           "VIP ONLY!!! The Premium dry aged wagyu A5 beef with special secret WWE sauce made exclusively for the VIP served specially.",
@@ -37,7 +41,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Cena Rib Eye with Tartar Sauce",
       price: "178.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_cena_ribeye.jpg",
       rating: "4.9",
       description:
           "John Cena eat this?!! Tasty tender US rib eye premium beef grilled perfectly well comes with special tartar sauce feels like john cena.",
@@ -45,7 +49,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Under T-aker Bone Steak",
       price: "208.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_under_Taker_Bone.jpg",
       rating: "4.8",
       description:
           "Champions only! T-Bone beef steak marinated by signature WWE sauce with smoky flavour and delicious tender meat.",
@@ -53,7 +57,7 @@ class _MenuPageState extends State<MenuPage> {
     Signature(
       name: "Shaky Shake Mysterio",
       price: "36.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_shaky_shake.jpg",
       rating: "4.9",
       description:
           "Mysterio? some mysterious mix of ingredients special for WWE feel fresh and sweet milkshake make your day feel free and mysterious.",
@@ -94,7 +98,7 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: "Chicken Parmesan",
         price: "23.000",
-        imagePath: "images/m_chicken_parmesan.jpg",
+        imagePath: "images/m_Parmesan.jpg",
         rating: "4.6",
         description:
             "Crispy breaded chicken smothered in marinara sauce and melted mozzarella cheese."),
@@ -108,7 +112,7 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: "Potluck Mac and Cheese",
         price: "23.000",
-        imagePath: "images/m_potluck_mac_and_cheese.jpg",
+        imagePath: "images/m_portluck.jpg",
         rating: "4.6",
         description:
             "Creamy and cheesy, our macaroni and cheese is a potluck favorite. Elbow macaroni coated in a velvety cheese sauce, baked to a golden brown crust. A comforting classic that brings everyone to the table and the most comforting to be in a dinner with your couple AWW."),
@@ -138,9 +142,9 @@ class _MenuPageState extends State<MenuPage> {
   // Drink Menu
   final List<Drink> drinkMenu = [
     Drink(
-      name: "Avocado Juice",
+      name: "Avocado juice",
       price: "18.000",
-      imagePath: "images/d_avocado_juice.jpeg",
+      imagePath: "images/d_avocado_juice.jpg",
       rating: "4.7",
       description:
           "Creamy and refreshing, Avocado Juice is a blend of ripe avocados, a hint of sweetness, and a splash of chilled goodness. A nourishing and satisfying beverage that's as indulgent as it is healthy, good for bulking, also WWE choices.",
@@ -148,7 +152,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Orange Juice",
       price: "18.000",
-      imagePath: "images/d_orange_juice.jpeg",
+      imagePath: "images/d_orange_juice.jpg",
       rating: "4.6",
       description:
           "Start your day with a burst of happiness while single! Orange Juice is freshly squeezed to perfection, offering a sweet and tangy flavor that's as invigorating as a stroll through a citrus grove.",
@@ -196,7 +200,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Classic Milk Tea",
       price: "23.000",
-      imagePath: "images/d_classic_milk_tea.jpg",
+      imagePath: "images/d_classic_milkshake.jpg",
       rating: "4.6",
       description:
           "Embrace the comforting warmth feels like in mama’s hug. Perfectly brewed black tea meets velvety milk, creating a harmonious balance of flavors that's both nostalgic and delightful.",
@@ -204,7 +208,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Matcha Milk Tea",
       price: "24.000",
-      imagePath: "images/d_matcha_milk_tea.jpg",
+      imagePath: "images/d_matcha_milktea.jpg",
       rating: "4.8",
       description:
           "Experience the vibrant green goodness of our Matcha Milk Tea. High-quality matcha powder only can bought by WWE, meets smooth milk for a beverage that's both energizing and soothing. A perfect blend of tradition and innovation in every sip.",
@@ -212,7 +216,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Taro Milk Tea",
       price: "24.000",
-      imagePath: "images/d_taro_milk_tea.jpg",
+      imagePath: "images/d_taro_milkshake.jpg",
       rating: "4.5",
       description:
           "A unique twist on tradition! Our Taro Milk Tea features the rich, earthy flavor of taro combined with the creamy goodness of milk tea. A delicious and exotic choice for those seeking something different.",
@@ -232,6 +236,7 @@ class _MenuPageState extends State<MenuPage> {
     //get the shop and it's menu
     final shop = context.read<Shop>();
     final foodMenu = shop.foodMenu;
+    
 
     Navigator.push(
       context,
@@ -242,6 +247,40 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
+
+// Navigate to drink item details page
+void navigateToDrinkDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final drinkMenu = shop.drinkMenus;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => DrinkDetailsPage(
+        drink: drinkMenu[index],
+      ),
+    ),
+  );
+}
+
+// Navigate to signature item details page
+void navigateToSignatureDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final signatureMenu = shop.signatureMenu;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SignatureDetailsPage(
+        signature: signatureMenu[index],
+      ),
+    ),
+  );
+}
+
+
 
   // sign user out method
   void signUserOut() {
@@ -272,7 +311,7 @@ class _MenuPageState extends State<MenuPage> {
           color: Colors.grey[900],
         ),
         title: Text(
-          'WONDERFUL WESTERN EATING',
+          'W.W.E',
           style: TextStyle(color: Colors.grey[900]),
         ),
       ),
@@ -280,8 +319,11 @@ class _MenuPageState extends State<MenuPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Promo banner
-            Container(
+
+          const SizedBox(height: 10),
+            
+          // Promo banner
+          Container(
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
@@ -307,11 +349,38 @@ class _MenuPageState extends State<MenuPage> {
                   const SizedBox(width: 20),
                   MyButton(
                     text: "Redeem",
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.red,
+                          content: const Text(
+                            "You have reedem the promo!",
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          actions: [
+                            // okay button
+                            IconButton(
+                              onPressed: () {
+                                // Pop once to remove the dialog
+                                Navigator.pop(context);
+                                // Pop again to navigate to the previous screen
+                              },
+                              icon: const Icon(Icons.done),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
             ),
+
+            const SizedBox(height: 10),
 
             // Special offer image and text
             Container(
@@ -335,6 +404,43 @@ class _MenuPageState extends State<MenuPage> {
                 ],
               ),
             ),
+
+            const SizedBox(height: 5),
+
+            // location bar
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
+                padding: const EdgeInsets.all(21),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(width: 5),
+                    const FaIcon(
+                      FontAwesomeIcons.mapLocationDot,
+                      color: Color(0xFFf60909),
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'Visit Our Location',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    const SizedBox(width: 6),
+                    MyButton(
+                      text: "Visit",
+                      onTap: () {
+                        Navigator.pushNamed(context, '/location');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
 
             const SizedBox(height: 25),
 
@@ -406,37 +512,19 @@ class _MenuPageState extends State<MenuPage> {
 
             const SizedBox(height: 10),
 
-            // Signature menu list
-            // Container(
-            //   height: 300,
-            //   child: ListView.builder(
-            //     scrollDirection: Axis.horizontal,
-            //     itemCount: signatureMenu.length,
-            //     itemBuilder: (context, index) => FoodTile(
-            //       margin: EdgeInsets.all(8),
-            //       width: 150,
-            //       color: Colors.orange,
-            //       child: Center(
-            //         child: Text(
-            //           signatureMenu[index].name,
-            //           style: TextStyle(color: Colors.white),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
-            Container(
-              height: 300,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
-                itemBuilder: (context, index) => SignatureTile(
-                  signature: signatureMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+            //signature menu list
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: signatureMenu.length,
+                  itemBuilder: (context, index) => SignatureTile(
+                    signature: signatureMenu[index],
+                    onTap: () => navigateToSignatureDetails(index),
+                  ),
                 ),
               ),
-            ),
+
 
             const SizedBox(height: 50),
 
@@ -456,14 +544,15 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             // Drink menu list
+            // Drink menu list
             Container(
-              height: 300,
-              child: ListView.builder(
+                height: 300,
+                child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
+                itemCount: drinkMenu.length,
                 itemBuilder: (context, index) => DrinkTile(
-                  drink: drinkMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+                drink: drinkMenu[index],
+                onTap: () => navigateToDrinkDetails(index), // Uncomment this line
                 ),
               ),
             ),
