@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
-import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import '../models/drink.dart';
 
@@ -41,7 +40,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
       final shop = context.read<Shop>();
 
       // add to cart
-      shop.addToCart(widget.drink as Food, quantityCount);
+      shop.addToCart2(widget.drink, quantityCount);
 
       // let the user know successful
       showDialog(

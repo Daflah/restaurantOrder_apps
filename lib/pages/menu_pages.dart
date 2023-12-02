@@ -311,7 +311,7 @@ void navigateToSignatureDetails(int index) {
           color: Colors.grey[900],
         ),
         title: Text(
-          'WONDERFUL WESTERN EATING',
+          'W.W.E',
           style: TextStyle(color: Colors.grey[900]),
         ),
       ),
@@ -319,9 +319,11 @@ void navigateToSignatureDetails(int index) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+          const SizedBox(height: 10),
             
-            // Promo banner
-     Container(
+          // Promo banner
+          Container(
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
@@ -331,7 +333,7 @@ void navigateToSignatureDetails(int index) {
               child: Row(
                 children: [
                   Image.asset(
-                    'images/pasta.png',
+                    'images/coupon.png',
                     height: 50,
                   ),
                   const SizedBox(width: 20),
@@ -378,6 +380,7 @@ void navigateToSignatureDetails(int index) {
               ),
             ),
 
+            const SizedBox(height: 10),
 
             // Special offer image and text
             Container(
@@ -405,40 +408,41 @@ void navigateToSignatureDetails(int index) {
             const SizedBox(height: 5),
 
             // location bar
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                },
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
+                padding: const EdgeInsets.all(21),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Row(
                   children: [
-                    const SizedBox(width: 20),
-                    FaIcon(
-                      FontAwesomeIcons.mapLocationDot,
-                      color: const Color(0xFFf60909),
-                    ),
                     const SizedBox(width: 5),
+                    const FaIcon(
+                      FontAwesomeIcons.mapLocationDot,
+                      color: Color(0xFFf60909),
+                    ),
+                    const SizedBox(width: 10),
                     const Text(
                       'Visit Our Location',
                       style: TextStyle(fontSize: 18),
                     ),
                     const SizedBox(width: 6),
-                     MyButton(
-                    text: "Visit",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/location');
-                    },
-                  ),
+                    MyButton(
+                      text: "Visit",
+                      onTap: () {
+                        Navigator.pushNamed(context, '/location');
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 35),
+
+
+            const SizedBox(height: 25),
 
             // Search bar
             Padding(

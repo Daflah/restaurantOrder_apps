@@ -94,7 +94,7 @@ Food(
     Drink(
       name: "Orange Juice",
       price: "18.000",
-      imagePath: "images/d_orange_juice.jpeg",
+      imagePath: "images/d_orange_juice.jpg",
       rating: "4.6",
       description:
           "Start your day with a burst of happiness while single! Orange Juice is freshly squeezed to perfection, offering a sweet and tangy flavor that's as invigorating as a stroll through a citrus grove.",
@@ -177,7 +177,7 @@ Food(
     Signature(
       name: "Wagyu Beef Dry Aged x WWE",
       price: "188.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_wagyu_beef.jpg",
       rating: "5.0",
       description:
           "VIP ONLY!!! The Premium dry aged wagyu A5 beef with special secret WWE sauce made exclusively for the VIP served specially.",
@@ -185,7 +185,7 @@ Food(
     Signature(
       name: "Cena Rib Eye with Tartar Sauce",
       price: "178.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_cena_ribeye.jpg",
       rating: "4.9",
       description:
           "John Cena eat this?!! Tasty tender US rib eye premium beef grilled perfectly well comes with special tartar sauce feels like john cena.",
@@ -193,7 +193,7 @@ Food(
     Signature(
       name: "Under T-aker Bone Steak",
       price: "208.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_under_Taker_Bone.jpg",
       rating: "4.8",
       description:
           "Champions only! T-Bone beef steak marinated by signature WWE sauce with smoky flavour and delicious tender meat.",
@@ -201,7 +201,7 @@ Food(
     Signature(
       name: "Shaky Shake Mysterio",
       price: "36.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_shaky_shake.jpg",
       rating: "4.9",
       description:
           "Mysterio? some mysterious mix of ingredients special for WWE feel fresh and sweet milkshake make your day feel free and mysterious.",
@@ -230,9 +230,36 @@ Food(
     }
     notifyListeners();
   }
+
+
+  void addToCart2(Drink drinkItem, int quantity) {
+    for (int  i=0 ; i < quantity; i++) {
+      _cart2.add(drinkItem);
+    }
+    notifyListeners();
+  }
+
+  void addToCart3(Signature signatureItem, int quantity) {
+    for (int  i=0 ; i < quantity; i++) {
+      _cart3.add(signatureItem);
+    }
+    notifyListeners();
+  }
   //remove from cart
   void removeFromcart(Food food) {
     _cart.remove(food);
+    notifyListeners();
+   
+}
+
+void removeFromcart2(Drink drink) {
+    _cart2.remove(drink);
+    notifyListeners();
+   
+}
+
+void removeFromcart3(Signature signature) {
+    _cart3.remove(signature);
     notifyListeners();
    
 }
