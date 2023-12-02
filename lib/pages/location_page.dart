@@ -26,7 +26,7 @@ class Mylocation extends StatelessWidget {
       subtitle: 'PR74+GRC, Jl. Jimbaran, Kalideres, RT.4/RW.13, Cilandak Bar.,Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 12430',
       imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
-        // Button click action for WWE 1
+        
         print('Button clicked for WWE 1');
       },
     ),
@@ -35,7 +35,7 @@ class Mylocation extends StatelessWidget {
       subtitle: 'Jl. Menteng Atas BARAT3 No.23, RT.11/RW.6, Menteng Atas, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12960',
       imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
-        // Button click action for WWE 2
+        
         print('Button clicked for WWE 2');
       },
     ),
@@ -44,7 +44,7 @@ class Mylocation extends StatelessWidget {
       subtitle: 'Rukan gold coats, Jl. Pantai Indah Kapuk No.12 - 15, RT.6/RW.2, Kamal Muara, Kec. Penjaringan, Daerah Khusus Ibukota Jakarta 14470',
       imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
-        // Button click action for WWE 3
+        
         print('Button clicked for WWE 3');
       },
     ),
@@ -53,7 +53,7 @@ class Mylocation extends StatelessWidget {
       subtitle: 'RT.1/RW.11, Cipinang Cempedak, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13340',
       imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
-        // Button click action for WWE 4
+        
         print('Button clicked for WWE 4');
       },
     ),
@@ -97,6 +97,7 @@ class CustomListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Color.fromARGB(255, 86, 112, 126),
       child: ListTile(
         contentPadding: EdgeInsets.all(30.0),
         leading: Container(
@@ -109,15 +110,19 @@ class CustomListItemWidget extends StatelessWidget {
         ),
         title: Text(
           item.title,
-          style: TextStyle(fontSize: 18.0),
+          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
         ),
         subtitle: Text(
           item.subtitle,
-          style: TextStyle(fontSize: 14.0),
+          style: TextStyle(fontSize: 13.0),
         ),
         trailing: ElevatedButton(
-          onPressed: item.onPressed, // Use the callback from CustomListItem
-          child: Text('Button'),
+          onPressed: item.onPressed, 
+          style: ElevatedButton.styleFrom(
+            primary: Colors.pink, 
+          ),
+          child: Text('Go To Maps >'),
+          
         ),
       ),
     );
