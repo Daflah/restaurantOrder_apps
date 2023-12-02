@@ -214,6 +214,13 @@ Food(
   final List<Drink> _cart2 = [];
   final List<Signature> _cart3 = [];
 
+  void clearCarts() {
+    cart.clear();
+    cart2.clear();
+    cart3.clear();
+    notifyListeners();
+  }
+
   //getter methode
   List<Food> get foodMenu => _foodMenu;
   List<Drink> get drinkMenus => drinkMenu;

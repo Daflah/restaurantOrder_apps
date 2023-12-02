@@ -366,7 +366,6 @@ void navigateToSignatureDetails(int index) {
                               onPressed: () {
                                 // Pop once to remove the dialog
                                 Navigator.pop(context);
-                                // Pop again to navigate to the previous screen
                               },
                               icon: const Icon(Icons.done),
                               color: Colors.white,

@@ -64,39 +64,70 @@ Widget build(BuildContext context) {
               },
             ),
           ),
-          //PAY BUTTON
+          // PAY BUTTON
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: MyButton(
-              text: "Pay Now", 
+              text: "Pay Now",
               onTap: () {
-                      showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (context) => AlertDialog(
-                          backgroundColor: Colors.red,
-                          content: const Text(
-                            "You have reedem the promo!",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          actions: [
-                            // okay button
-                            IconButton(
-                              onPressed: () {
-                                // Pop once to remove the dialog
-                                Navigator.pop(context);
-                                // Pop again to navigate to the previous screen
-                                Navigator.pop(context);
-                              },
-                              icon: const Icon(Icons.done),
-                              color: Colors.white,
-                            ),
-                          ],
+                // Check if the cart is empty
+                if (value.cart.isEmpty && value.cart2.isEmpty && value.cart3.isEmpty) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Colors.red,
+                      content: const Text(
+                        "You must buy something before proceeding to payment.",
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                      actions: [
+                        // okay button
+                        IconButton(
+                          onPressed: () {
+                            // Pop once to remove the dialog
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.done),
+                          color: Colors.white,
                         ),
-                      );
-                    },
-          ),
+                      ],
+                    ),
+                  );
+                } else {
+                  // Show the payment dialog
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Colors.red,
+                      content: const Text(
+                        "Payment Successful!",
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                      actions: [
+                        // okay button
+                        IconButton(
+                          onPressed: () {
+                            // Pop once to remove the dialog
+                            Navigator.pop(context);
+
+                            // Clear the carts after successful payment
+                            value.clearCarts();
+
+                            // Pop again to navigate to the previous screen
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.done),
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+            ),
           ),
         ],
       ),
