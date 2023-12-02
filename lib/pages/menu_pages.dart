@@ -150,7 +150,7 @@ class _MenuPageState extends State<MenuPage> {
     Drink(
       name: "Orange Juice",
       price: "18.000",
-      imagePath: "images/d_orange_juice.jpeg",
+      imagePath: "images/d_orange_juice.jpg",
       rating: "4.6",
       description:
           "Start your day with a burst of happiness while single! Orange Juice is freshly squeezed to perfection, offering a sweet and tangy flavor that's as invigorating as a stroll through a citrus grove.",
@@ -256,7 +256,7 @@ class _MenuPageState extends State<MenuPage> {
   //     context,
   //     MaterialPageRoute(
   //       builder: (context) => FoodDetailsPage(
-  //         food: foodMenu[index],
+  //         food: drinkMenu[index],
   //       ),
   //     ),
   //   );
