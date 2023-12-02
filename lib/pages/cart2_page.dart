@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
-
-import 'package:restaurant_and_order/models/food.dart';
+import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/shop.dart';
+
 
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   //remove from cart
-  void removeFromcart(Food food,BuildContext context){
+  void removeFromcart(Drink drink,BuildContext context){
     //get access to shop
     final shop = context.read<Shop>();
 
     //remove from cart 
-    shop.removeFromcart(food);
+    shop.removeFromcart2(drink);
   }
   
   get builder => null;
@@ -34,14 +34,17 @@ class CartPage extends StatelessWidget {
               itemCount: value.cart.length,
               itemBuilder: (context,index) {
               //get food from cart
-              final Food food = value.cart [index];
               
-              //get food name
-              final String foodName = food.name;
+              final Drink drink = value.cart2 [index];
             
-              //get food price
-              final String foodPrice = food.price;
+              //get food name
              
+              final String drinkName = drink.name;
+              
+              //get food price
+              
+              final String drinkPrice = drink.price;
+              
               //return list title
               return Container(
                 decoration:  BoxDecoration(color: Colors.lightBlue,
@@ -50,19 +53,19 @@ class CartPage extends StatelessWidget {
                 margin: const EdgeInsets.only(left:20,top: 20 ,right: 20),
                 child: ListTile(
                   title: Text
-                  (foodName,
+                  (drinkName,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold
                   ),
                 ),
-                  subtitle: Text(foodPrice,
+                  subtitle: Text(drinkPrice,
                   style: const TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold
                   )),
                   trailing: IconButton(icon: const Icon(Icons.delete, color: Colors.grey,),
-                  onPressed: () => removeFromcart(food,context),
+                  onPressed: () => removeFromcart(drink,context),
                   ),
                 ),
               );
