@@ -333,7 +333,7 @@ void navigateToSignatureDetails(int index) {
               child: Row(
                 children: [
                   Image.asset(
-                    'images/pasta.png',
+                    'images/coupon.png',
                     height: 50,
                   ),
                   const SizedBox(width: 20),
