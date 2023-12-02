@@ -177,7 +177,7 @@ Food(
     Signature(
       name: "Wagyu Beef Dry Aged x WWE",
       price: "188.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_wagyu_beef.jpg",
       rating: "5.0",
       description:
           "VIP ONLY!!! The Premium dry aged wagyu A5 beef with special secret WWE sauce made exclusively for the VIP served specially.",
@@ -185,7 +185,7 @@ Food(
     Signature(
       name: "Cena Rib Eye with Tartar Sauce",
       price: "178.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_cena_ribeye.jpg",
       rating: "4.9",
       description:
           "John Cena eat this?!! Tasty tender US rib eye premium beef grilled perfectly well comes with special tartar sauce feels like john cena.",
@@ -193,7 +193,7 @@ Food(
     Signature(
       name: "Under T-aker Bone Steak",
       price: "208.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_under_Taker_Bone.jpg",
       rating: "4.8",
       description:
           "Champions only! T-Bone beef steak marinated by signature WWE sauce with smoky flavour and delicious tender meat.",
@@ -201,7 +201,7 @@ Food(
     Signature(
       name: "Shaky Shake Mysterio",
       price: "36.000",
-      imagePath: "images/pasta.png",
+      imagePath: "images/s_shaky_shake.jpg",
       rating: "4.9",
       description:
           "Mysterio? some mysterious mix of ingredients special for WWE feel fresh and sweet milkshake make your day feel free and mysterious.",
