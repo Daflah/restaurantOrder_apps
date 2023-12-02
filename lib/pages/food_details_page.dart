@@ -129,8 +129,6 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                           fontSize: 18)),
 
                   const SizedBox(height: 10),
-
-
                   
                   Text(
                     widget.food.description,           
