@@ -281,7 +281,6 @@ void navigateToSignatureDetails(int index) {
 }
 
 
-
   // sign user out method
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -290,29 +289,31 @@ void navigateToSignatureDetails(int index) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       appBar: AppBar(
         actions: [
           IconButton(
             onPressed: signUserOut,
             icon: const Icon(Icons.logout),
+            color: Colors.white,
           ),
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/cartpage');
             },
             icon: const Icon(Icons.shopping_cart),
+            color: Colors.white,
           ),
         ],
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Icon(
+        leading: const Icon(
           Icons.menu,
-          color: Colors.grey[900],
+          color: Colors.white,
         ),
-        title: Text(
+        title: const Text(
           'W.W.E',
-          style: TextStyle(color: Colors.grey[900]),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -325,7 +326,7 @@ void navigateToSignatureDetails(int index) {
           // Promo banner
           Container(
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: const Color.fromARGB(255, 255, 17, 0),
                 borderRadius: BorderRadius.circular(20),
               ),
               margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -333,7 +334,7 @@ void navigateToSignatureDetails(int index) {
               child: Row(
                 children: [
                   Image.asset(
-                    'images/pasta.png',
+                    'images/coupon.png',
                     height: 50,
                   ),
                   const SizedBox(width: 20),
@@ -366,7 +367,6 @@ void navigateToSignatureDetails(int index) {
                               onPressed: () {
                                 // Pop once to remove the dialog
                                 Navigator.pop(context);
-                                // Pop again to navigate to the previous screen
                               },
                               icon: const Icon(Icons.done),
                               color: Colors.white,
@@ -392,13 +392,14 @@ void navigateToSignatureDetails(int index) {
               ),
               child: Row(
                 children: [
+                  const SizedBox(width: 12),
                   Image.asset(
-                    'images/beef.png',
-                    height: 100,
+                    'images/L_undertaker.png',
+                    height: 90,
                   ),
                   const SizedBox(width: 20),
                   const Text(
-                    'Special Offer!',
+                    'Best Under-Deals!',
                     style: TextStyle(fontSize: 18),
                   ),
                 ],
@@ -468,13 +469,13 @@ void navigateToSignatureDetails(int index) {
             const SizedBox(height: 50),
 
             // Food menu header
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
                 "Food Menu",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey[800],
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),
@@ -498,13 +499,13 @@ void navigateToSignatureDetails(int index) {
             const SizedBox(height: 50),
 
             // Signature menu header
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
                 "Signature Menu",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey[800],
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),
@@ -529,13 +530,13 @@ void navigateToSignatureDetails(int index) {
             const SizedBox(height: 50),
 
             // Drink menu header
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
                 "Drink Menu",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey[800],
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),

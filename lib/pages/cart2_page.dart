@@ -47,7 +47,7 @@ class CartPage extends StatelessWidget {
               
               //return list title
               return Container(
-                decoration:  BoxDecoration(color: Colors.lightBlue,
+                decoration:  BoxDecoration(color: Color.fromARGB(255, 230, 75, 3),
                 borderRadius: BorderRadius.circular(8),
                 ),
                 margin: const EdgeInsets.only(left:20,top: 20 ,right: 20),
@@ -61,10 +61,10 @@ class CartPage extends StatelessWidget {
                 ),
                   subtitle: Text(drinkPrice,
                   style: const TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold
                   )),
-                  trailing: IconButton(icon: const Icon(Icons.delete, color: Colors.grey,),
+                  trailing: IconButton(icon: const Icon(Icons.delete, color: Colors.white,),
                   onPressed: () => removeFromcart(drink,context),
                   ),
                 ),

@@ -74,8 +74,10 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 86, 112, 126),
           // Isi properti AppBar seperti biasa
           ),
+          backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       body: Column(
         children: [
           // listview of food details
@@ -86,6 +88,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 children: [
                   // image
                   Image.asset(widget.food.imagePath, height: 200),
+                  
 
                   const SizedBox(height: 25),
 
@@ -103,8 +106,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       // rating number
                       Text(
                         widget.food.rating,
-                        style: TextStyle(
-                          color: Colors.grey[600],
+                        style: const TextStyle(
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -122,9 +125,9 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   const SizedBox(height: 25),
 
                   // description
-                  Text("Description",
+                  const Text("Description",
                       style: TextStyle(
-                          color: Colors.grey[900],
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18)),
 
@@ -133,7 +136,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   Text(
                     widget.food.description,           
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Colors.white,
                       fontSize: 14,
                       height: 2,
                     ),
@@ -146,7 +149,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
           // price + quantity + add to cart button
          Container(
   decoration: BoxDecoration(
-    color: const Color.fromARGB(255, 162, 14, 14),
+    color: const Color.fromARGB(255, 230, 75, 3),
     borderRadius: BorderRadius.circular(10), // Mengatur radius
   ),
             padding: const EdgeInsets.all(25),
@@ -173,7 +176,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                         // minus button
                         Container(
                           decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 98, 6, 6),
+                            color: Color.fromARGB(255, 153, 52, 5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -203,7 +206,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                         // plus button
                         Container(
                           decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 121, 12, 12),
+                            color: Color.fromARGB(255, 153, 52, 5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(

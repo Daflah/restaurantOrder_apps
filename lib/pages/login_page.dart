@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context, 
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.red,
           title: Center(
             child: Text(
               message,
@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 215, 211, 211),
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -86,15 +86,16 @@ class _LoginPageState extends State<LoginPage> {
                 const Icon(
                   Icons.lock,
                   size: 100,
+                  color: Color.fromARGB(255, 230, 75, 3),
                 ),
         
                 const SizedBox(height: 30),
                 
                 //welcome back or greetings
-                Text(
+                const Text(
                   'Welcome back you\'ve been missed!',
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
@@ -121,14 +122,14 @@ class _LoginPageState extends State<LoginPage> {
         
         
                 //forgot password
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[650]),
+                        style: TextStyle(color: Colors.white),
                       ),
                     ],
                   ),
@@ -145,29 +146,29 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 50),
         
                 //or continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
                     children: [
                       Expanded(
                         child: Divider(
                           thickness: 0.5,
-                          color: Colors.grey[400],
+                          color: Colors.white,
                         ),
                       ),
                 
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           'Or continue with',
-                          style: TextStyle(color: Colors.grey[700]),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                 
                       Expanded(
                         child: Divider(
                           thickness: 0.5,
-                          color: Colors.grey[400],
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -196,9 +197,9 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Not a member?',
-                      style: TextStyle(color: Colors.grey[700]),
+                      style: TextStyle(color: Colors.white),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(

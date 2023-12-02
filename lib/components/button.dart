@@ -15,8 +15,16 @@ class MyButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 65, 62, 62),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(40),
+          boxShadow: [
+          BoxShadow(
+            color: Colors.grey,   // Warna bayangan
+            offset: Offset(0, 2),  // Geser bayangan (x, y)
+            blurRadius: 4.0,       // Jarak blur bayangan
+            spreadRadius: 1.0,     // Sebaran bayangan
+          ),
+        ],
         ),
         padding: const EdgeInsets.all(20),
         child: Row(
@@ -26,7 +34,7 @@ class MyButton extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 17,
                 ),
             ),
@@ -36,7 +44,7 @@ class MyButton extends StatelessWidget {
             // Icon
             const Icon(
               Icons.arrow_forward,
-              color: Colors.white,
+              color: Colors.black,
               ),
           ],
         ),
