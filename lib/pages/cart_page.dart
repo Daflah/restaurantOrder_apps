@@ -41,11 +41,15 @@ class CartPage extends StatelessWidget {
 Widget build(BuildContext context) {
   return Consumer<Shop>(
     builder: (context, value, child) => Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       appBar: AppBar(
-        title: const Text("My Cart"),
+        title: const Text(
+          "My Cart", 
+          style: TextStyle(color: Colors.white
+          ),
+        ),
         elevation: 0,
-        backgroundColor: Colors.red,
+        backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       ),
       body: Column(
         children: [
@@ -64,39 +68,70 @@ Widget build(BuildContext context) {
               },
             ),
           ),
-          //PAY BUTTON
+          // PAY BUTTON
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: MyButton(
-              text: "Pay Now", 
+              text: "Pay Now",
               onTap: () {
-                      showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (context) => AlertDialog(
-                          backgroundColor: Colors.red,
-                          content: const Text(
-                            "You have reedem the promo!",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          actions: [
-                            // okay button
-                            IconButton(
-                              onPressed: () {
-                                // Pop once to remove the dialog
-                                Navigator.pop(context);
-                                // Pop again to navigate to the previous screen
-                                Navigator.pop(context);
-                              },
-                              icon: const Icon(Icons.done),
-                              color: Colors.white,
-                            ),
-                          ],
+                // Check if the cart is empty
+                if (value.cart.isEmpty && value.cart2.isEmpty && value.cart3.isEmpty) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Colors.red,
+                      content: const Text(
+                        "You must buy something before proceeding to payment.",
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                      actions: [
+                        // okay button
+                        IconButton(
+                          onPressed: () {
+                            // Pop once to remove the dialog
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.done),
+                          color: Colors.white,
                         ),
-                      );
-                    },
-          ),
+                      ],
+                    ),
+                  );
+                } else {
+                  // Show the payment dialog
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Colors.red,
+                      content: const Text(
+                        "Payment Successful!",
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                      actions: [
+                        // okay button
+                        IconButton(
+                          onPressed: () {
+                            // Pop once to remove the dialog
+                            Navigator.pop(context);
+
+                            // Clear the carts after successful payment
+                            value.clearCarts();
+
+                            // Pop again to navigate to the previous screen
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.done),
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+            ),
           ),
         ],
       ),
@@ -110,7 +145,7 @@ Widget buildCartItem(Food food, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.lightBlue,
+      color: Color.fromARGB(255, 230, 75, 3),
       borderRadius: BorderRadius.circular(8),
     ),
     margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -125,12 +160,12 @@ Widget buildCartItem(Food food, BuildContext context) {
       subtitle: Text(
         foodPrice,
         style: const TextStyle(
-          color: Colors.grey,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.grey),
+        icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () => removeFromcart(food, context),
       ),
     ),
@@ -143,7 +178,7 @@ Widget buildDrinkItem(Drink drink, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.lightBlue,
+      color: const Color.fromARGB(255, 230, 75, 3),
       borderRadius: BorderRadius.circular(8),
     ),
     margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -158,12 +193,12 @@ Widget buildDrinkItem(Drink drink, BuildContext context) {
       subtitle: Text(
         drinkPrice,
         style: const TextStyle(
-          color: Colors.grey,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.grey),
+        icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () => removeFromcart2(drink, context),
       ),
     ),
@@ -176,7 +211,7 @@ Widget buildSignatureItem(Signature signature, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.lightBlue,
+      color: Color.fromARGB(255, 230, 75, 3),
       borderRadius: BorderRadius.circular(8),
     ),
     margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -191,12 +226,12 @@ Widget buildSignatureItem(Signature signature, BuildContext context) {
       subtitle: Text(
         signaturePrice,
         style: const TextStyle(
-          color: Colors.grey,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.grey),
+        icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () => removeFromcart3(signature, context),
       ),
     ),
