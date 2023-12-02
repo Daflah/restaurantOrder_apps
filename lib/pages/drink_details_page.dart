@@ -75,8 +75,10 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 86, 112, 126),
         // Customize AppBar properties as needed
       ),
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       body: Column(
         children: [
           // listview of drink details
@@ -104,8 +106,8 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                       // rating number
                       Text(
                         widget.drink.rating,
-                        style: TextStyle(
-                          color: Colors.grey[600],
+                        style: const TextStyle(
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -123,10 +125,10 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                   const SizedBox(height: 25),
 
                   // description
-                  Text(
+                  const Text(
                     "Description",
                     style: TextStyle(
-                      color: Colors.grey[900],
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -137,7 +139,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                   Text(
                     widget.drink.description,
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Colors.white,
                       fontSize: 14,
                       height: 2,
                     ),
@@ -150,7 +152,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
           // price + quantity + add to cart button
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 162, 14, 14),
+              color: const Color.fromARGB(255, 230, 75, 3),
               borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.all(25),
@@ -177,7 +179,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                         // minus button
                         Container(
                           decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 98, 6, 6),
+                            color: Color.fromARGB(255, 153, 52, 5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -207,7 +209,7 @@ class _DrinkDetailsPageState extends State<DrinkDetailsPage> {
                         // plus button
                         Container(
                           decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 121, 12, 12),
+                            color: Color.fromARGB(255, 153, 52, 5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(

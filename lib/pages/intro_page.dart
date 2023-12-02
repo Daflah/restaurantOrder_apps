@@ -8,7 +8,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
@@ -30,7 +30,7 @@ class IntroPage extends StatelessWidget {
           // icon
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: Image.asset('images/beef.png'),
+            child: Image.asset('images/L_intro.png'),
           ),
       
           // title
@@ -61,10 +61,6 @@ class IntroPage extends StatelessWidget {
               Navigator.pushNamed(context, '/authpage');
             },
           )
-      
-      
-      
-      
         ]),
       ),
     );

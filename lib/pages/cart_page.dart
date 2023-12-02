@@ -41,11 +41,15 @@ class CartPage extends StatelessWidget {
 Widget build(BuildContext context) {
   return Consumer<Shop>(
     builder: (context, value, child) => Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       appBar: AppBar(
-        title: const Text("My Cart"),
+        title: const Text(
+          "My Cart", 
+          style: TextStyle(color: Colors.white
+          ),
+        ),
         elevation: 0,
-        backgroundColor: Colors.red,
+        backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       ),
       body: Column(
         children: [
@@ -141,7 +145,7 @@ Widget buildCartItem(Food food, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.lightBlue,
+      color: Color.fromARGB(255, 230, 75, 3),
       borderRadius: BorderRadius.circular(8),
     ),
     margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -156,12 +160,12 @@ Widget buildCartItem(Food food, BuildContext context) {
       subtitle: Text(
         foodPrice,
         style: const TextStyle(
-          color: Colors.grey,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.grey),
+        icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () => removeFromcart(food, context),
       ),
     ),
@@ -174,7 +178,7 @@ Widget buildDrinkItem(Drink drink, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.lightBlue,
+      color: const Color.fromARGB(255, 230, 75, 3),
       borderRadius: BorderRadius.circular(8),
     ),
     margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -189,12 +193,12 @@ Widget buildDrinkItem(Drink drink, BuildContext context) {
       subtitle: Text(
         drinkPrice,
         style: const TextStyle(
-          color: Colors.grey,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.grey),
+        icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () => removeFromcart2(drink, context),
       ),
     ),
@@ -207,7 +211,7 @@ Widget buildSignatureItem(Signature signature, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.lightBlue,
+      color: Color.fromARGB(255, 230, 75, 3),
       borderRadius: BorderRadius.circular(8),
     ),
     margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -222,12 +226,12 @@ Widget buildSignatureItem(Signature signature, BuildContext context) {
       subtitle: Text(
         signaturePrice,
         style: const TextStyle(
-          color: Colors.grey,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.grey),
+        icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () => removeFromcart3(signature, context),
       ),
     ),

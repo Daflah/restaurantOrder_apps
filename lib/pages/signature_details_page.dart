@@ -62,7 +62,9 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 86, 112, 126),
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 86, 112, 126),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -89,8 +91,8 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
                       const SizedBox(width: 5),
                       Text(
                         widget.signature.rating,
-                        style: TextStyle(
-                          color: Colors.grey[600],
+                        style: const TextStyle(
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -102,10 +104,10 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
                     style: GoogleFonts.dmSerifDisplay(fontSize: 28),
                   ),
                   const SizedBox(height: 25),
-                  Text(
+                  const Text(
                     "Description",
                     style: TextStyle(
-                      color: Colors.grey[900],
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -114,7 +116,7 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
                   Text(
                     widget.signature.description,
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Colors.white,
                       fontSize: 14,
                       height: 2,
                     ),
@@ -125,7 +127,7 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 162, 14, 14),
+              color: const Color.fromARGB(255, 230, 75, 3),
               borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.all(25),
@@ -147,7 +149,7 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
                       children: [
                         Container(
                           decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 98, 6, 6),
+                            color: Color.fromARGB(255, 153, 52, 5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -173,7 +175,7 @@ class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
                         ),
                         Container(
                           decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 121, 12, 12),
+                            color: Color.fromARGB(255, 153, 52, 5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
