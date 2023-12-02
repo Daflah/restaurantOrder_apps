@@ -8,9 +8,11 @@ import 'package:restaurant_and_order/models/drink.dart';
 import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
 import 'package:restaurant_and_order/models/signature.dart';
+import 'package:restaurant_and_order/pages/drink_details_page.dart';
 import 'package:restaurant_and_order/pages/food_details_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:restaurant_and_order/pages/location_page.dart';
+import 'package:restaurant_and_order/pages/signature_details_page.dart';
 
 import '../components/food_tile.dart';
 import '../components/drink_tile.dart';
@@ -110,7 +112,7 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: "Potluck Mac and Cheese",
         price: "23.000",
-        imagePath: "images/m_potluck_mac_and_cheese.jpg",
+        imagePath: "images/m_portluck.jpg",
         rating: "4.6",
         description:
             "Creamy and cheesy, our macaroni and cheese is a potluck favorite. Elbow macaroni coated in a velvety cheese sauce, baked to a golden brown crust. A comforting classic that brings everyone to the table and the most comforting to be in a dinner with your couple AWW."),
@@ -234,6 +236,7 @@ class _MenuPageState extends State<MenuPage> {
     //get the shop and it's menu
     final shop = context.read<Shop>();
     final foodMenu = shop.foodMenu;
+    
 
     Navigator.push(
       context,
@@ -244,6 +247,40 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
+
+// Navigate to drink item details page
+void navigateToDrinkDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final drinkMenu = shop.drinkMenus;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => DrinkDetailsPage(
+        drink: drinkMenu[index],
+      ),
+    ),
+  );
+}
+
+// Navigate to signature item details page
+void navigateToSignatureDetails(int index) {
+  // get the shop and its menu
+  final shop = context.read<Shop>();
+  final signatureMenu = shop.signatureMenu;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SignatureDetailsPage(
+        signature: signatureMenu[index],
+      ),
+    ),
+  );
+}
+
+
 
   // sign user out method
   void signUserOut() {
@@ -284,7 +321,7 @@ class _MenuPageState extends State<MenuPage> {
           children: [
             
             // Promo banner
-            Container(
+     Container(
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
@@ -310,11 +347,37 @@ class _MenuPageState extends State<MenuPage> {
                   const SizedBox(width: 20),
                   MyButton(
                     text: "Redeem",
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.red,
+                          content: const Text(
+                            "You have reedem the promo!",
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          actions: [
+                            // okay button
+                            IconButton(
+                              onPressed: () {
+                                // Pop once to remove the dialog
+                                Navigator.pop(context);
+                                // Pop again to navigate to the previous screen
+                              },
+                              icon: const Icon(Icons.done),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
             ),
+
 
             // Special offer image and text
             Container(
@@ -445,37 +508,19 @@ class _MenuPageState extends State<MenuPage> {
 
             const SizedBox(height: 10),
 
-            // Signature menu list
-            // Container(
-            //   height: 300,
-            //   child: ListView.builder(
-            //     scrollDirection: Axis.horizontal,
-            //     itemCount: signatureMenu.length,
-            //     itemBuilder: (context, index) => FoodTile(
-            //       margin: EdgeInsets.all(8),
-            //       width: 150,
-            //       color: Colors.orange,
-            //       child: Center(
-            //         child: Text(
-            //           signatureMenu[index].name,
-            //           style: TextStyle(color: Colors.white),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
-            Container(
-              height: 300,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
-                itemBuilder: (context, index) => SignatureTile(
-                  signature: signatureMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+            //signature menu list
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: signatureMenu.length,
+                  itemBuilder: (context, index) => SignatureTile(
+                    signature: signatureMenu[index],
+                    onTap: () => navigateToSignatureDetails(index),
+                  ),
                 ),
               ),
-            ),
+
 
             const SizedBox(height: 50),
 
@@ -495,14 +540,15 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             // Drink menu list
+            // Drink menu list
             Container(
-              height: 300,
-              child: ListView.builder(
+                height: 300,
+                child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _foodMenu.length,
+                itemCount: drinkMenu.length,
                 itemBuilder: (context, index) => DrinkTile(
-                  drink: drinkMenu[index],
-                  onTap: () => navigateToFoodDetails(index),
+                drink: drinkMenu[index],
+                onTap: () => navigateToDrinkDetails(index), // Uncomment this line
                 ),
               ),
             ),

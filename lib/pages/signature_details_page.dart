@@ -2,70 +2,60 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_and_order/components/button.dart';
+import 'package:restaurant_and_order/models/food.dart';
 import 'package:restaurant_and_order/models/shop.dart';
-import '../models/food.dart';
+import '../models/signature.dart';
 
-class FoodDetailsPage extends StatefulWidget {
-  final Food food;
+class SignatureDetailsPage extends StatefulWidget {
+  final Signature signature;
 
-  const FoodDetailsPage({super.key, required this.food});
+  const SignatureDetailsPage({Key? key, required this.signature});
 
   @override
-  State<FoodDetailsPage> createState() => _FoodDetailsPageState();
+  State<SignatureDetailsPage> createState() => _SignatureDetailsPageState();
 }
 
-class _FoodDetailsPageState extends State<FoodDetailsPage> {
-  // quantity
+class _SignatureDetailsPageState extends State<SignatureDetailsPage> {
   int quantityCount = 0;
 
-  // decrement quantity
   void decrementQuantity() {
     setState(() {
       quantityCount--;
     });
   }
 
-  //increment quantity
   void incrementQuantity() {
     setState(() {
-      setState(() {
-        quantityCount++;
-      });
+      quantityCount++;
     });
   }
 
-  // add to cart
   void addToCart() {
-    //only add to cart if there is something in the cart
-    if (quantityCount > 0){
-      //get access to shop
+    if (quantityCount > 0) {
       final shop = context.read<Shop>();
+      shop.addToCart(widget.signature as Food, quantityCount);
 
-      //add to cart
-      shop.addToCart(widget.food, quantityCount);
-
-      //let the user know successful
-      showDialog(context: context,
-      barrierDismissible: false, 
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.red,
-        content: const Text("successfully added to cart" ,style: TextStyle (color: Colors.white),textAlign: TextAlign.center,
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.red,
+          content: const Text(
+            "Successfully added to cart",
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.done),
+              color: Colors.white,
+            ),
+          ],
         ),
-        
-        actions: [
-          //okay button
-          IconButton(
-            onPressed: () {
-          //pap once to remove dialog
-          Navigator.pop(context);
-          //pap again to previous screen
-          Navigator.pop(context);
-          },
-          icon: const Icon(Icons.done),color: Colors.white,
-          
-          )
-        ],
-      ),
       );
     }
   }
@@ -74,35 +64,32 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // Isi properti AppBar seperti biasa
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        // Add other AppBar properties as needed
+      ),
       body: Column(
         children: [
-          // listview of food details
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: ListView(
                 children: [
-                  // image
-                  Image.asset(widget.food.imagePath, height: 200),
-
+                  Image.asset(widget.signature.imagePath, height: 200),
                   const SizedBox(height: 25),
-
-                  // rating
                   Row(
                     children: [
-                      // star icon
                       Icon(
                         Icons.star,
                         color: Colors.yellow[800],
                       ),
-
                       const SizedBox(width: 5),
-
-                      // rating number
                       Text(
-                        widget.food.rating,
+                        widget.signature.rating,
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontWeight: FontWeight.bold,
@@ -110,28 +97,23 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 10),
-
-                  // food name
                   Text(
-                    widget.food.name,
+                    widget.signature.name,
                     style: GoogleFonts.dmSerifDisplay(fontSize: 28),
                   ),
-
                   const SizedBox(height: 25),
-
-                  // description
-                  Text("Description",
-                      style: TextStyle(
-                          color: Colors.grey[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18)),
-
-                  const SizedBox(height: 10),
-                  
                   Text(
-                    widget.food.description,           
+                    "Description",
+                    style: TextStyle(
+                      color: Colors.grey[900],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    widget.signature.description,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 14,
@@ -142,35 +124,28 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
               ),
             ),
           ),
-
-          // price + quantity + add to cart button
-         Container(
-  decoration: BoxDecoration(
-    color: const Color.fromARGB(255, 162, 14, 14),
-    borderRadius: BorderRadius.circular(10), // Mengatur radius
-  ),
+          Container(
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 162, 14, 14),
+              borderRadius: BorderRadius.circular(10),
+            ),
             padding: const EdgeInsets.all(25),
             child: Column(
               children: [
-                // price + quantity
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // price
                     Text(
-                      "\$${widget.food.price}",
+                      "\$${widget.signature.price}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
-
-                    // quantity
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // minus button
                         Container(
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 98, 6, 6),
@@ -184,8 +159,6 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             onPressed: decrementQuantity,
                           ),
                         ),
-
-                        // quantity count
                         SizedBox(
                           width: 40,
                           child: Center(
@@ -199,8 +172,6 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             ),
                           ),
                         ),
-
-                        // plus button
                         Container(
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 121, 12, 12),
@@ -218,10 +189,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 25),
-
-                //add to cart button
                 MyButton(text: "Add To Cart", onTap: addToCart),
               ],
             ),
@@ -231,4 +199,3 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     );
   }
 }
-
