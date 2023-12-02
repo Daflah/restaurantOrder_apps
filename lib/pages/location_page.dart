@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_and_order/pages/menu_pages.dart';
 
 void main() {
   runApp(Mylocation());
@@ -23,7 +24,7 @@ class Mylocation extends StatelessWidget {
     CustomListItem(
       title: 'WWE 1',
       subtitle: 'PR74+GRC, Jl. Jimbaran, Kalideres, RT.4/RW.13, Cilandak Bar.,Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 12430',
-      imageUrl: 'images/beef.png',
+      imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
         // Button click action for WWE 1
         print('Button clicked for WWE 1');
@@ -32,7 +33,7 @@ class Mylocation extends StatelessWidget {
     CustomListItem(
       title: 'WWE 2',
       subtitle: 'Jl. Menteng Atas BARAT3 No.23, RT.11/RW.6, Menteng Atas, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12960',
-      imageUrl: 'images/beef.png',
+      imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
         // Button click action for WWE 2
         print('Button clicked for WWE 2');
@@ -41,7 +42,7 @@ class Mylocation extends StatelessWidget {
     CustomListItem(
       title: 'WWE 3',
       subtitle: 'Rukan gold coats, Jl. Pantai Indah Kapuk No.12 - 15, RT.6/RW.2, Kamal Muara, Kec. Penjaringan, Daerah Khusus Ibukota Jakarta 14470',
-      imageUrl: 'images/beef.png',
+      imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
         // Button click action for WWE 3
         print('Button clicked for WWE 3');
@@ -50,7 +51,7 @@ class Mylocation extends StatelessWidget {
     CustomListItem(
       title: 'WWE 4',
       subtitle: 'RT.1/RW.11, Cipinang Cempedak, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13340',
-      imageUrl: 'images/beef.png',
+      imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
         // Button click action for WWE 4
         print('Button clicked for WWE 4');
@@ -65,6 +66,17 @@ class Mylocation extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Location WWE - Daerah DKI Jakarta'),
+          backgroundColor: Color.fromARGB(255, 255, 0, 93),
+        actions: [
+          //buttonBack
+        IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            // Logika untuk kembali ke layar sebelumnya
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
         ),
         body: ListView.builder(
           itemCount: items.length,
