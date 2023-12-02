@@ -230,9 +230,36 @@ Food(
     }
     notifyListeners();
   }
+
+
+  void addToCart2(Drink drinkItem, int quantity) {
+    for (int  i=0 ; i < quantity; i++) {
+      _cart2.add(drinkItem);
+    }
+    notifyListeners();
+  }
+
+  void addToCart3(Signature signatureItem, int quantity) {
+    for (int  i=0 ; i < quantity; i++) {
+      _cart3.add(signatureItem);
+    }
+    notifyListeners();
+  }
   //remove from cart
   void removeFromcart(Food food) {
     _cart.remove(food);
+    notifyListeners();
+   
+}
+
+void removeFromcart2(Drink drink) {
+    _cart2.remove(drink);
+    notifyListeners();
+   
+}
+
+void removeFromcart3(Signature signature) {
+    _cart3.remove(signature);
     notifyListeners();
    
 }
