@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_and_order/pages/login_or_register_page.dart';
-import 'package:restaurant_and_order/pages/login_page.dart';
 import 'package:restaurant_and_order/pages/menu_pages.dart';
 
 class AuthPage extends StatelessWidget {

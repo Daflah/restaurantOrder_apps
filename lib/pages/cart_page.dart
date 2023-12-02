@@ -18,8 +18,7 @@ class CartPage extends StatelessWidget {
 
     //remove from cart 
     shop.removeFromcart(food);
-    shop.removeFromcart2(Drink as Drink);
-    shop.removeFromcart3(Signature as Signature);
+    
   }
 
   void removeFromcart2(Drink drink,BuildContext context){
@@ -68,7 +67,36 @@ Widget build(BuildContext context) {
           //PAY BUTTON
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: MyButton(text: "Pay Now", onTap: () {}),
+            child: MyButton(
+              text: "Pay Now", 
+              onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.red,
+                          content: const Text(
+                            "You have reedem the promo!",
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          actions: [
+                            // okay button
+                            IconButton(
+                              onPressed: () {
+                                // Pop once to remove the dialog
+                                Navigator.pop(context);
+                                // Pop again to navigate to the previous screen
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(Icons.done),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+          ),
           ),
         ],
       ),
