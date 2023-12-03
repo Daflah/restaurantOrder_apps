@@ -32,7 +32,7 @@ class Mylocation extends StatelessWidget {
     ),
     CustomListItem(
       title: 'WWE 2',
-      subtitle: 'Jl. Menteng Atas BARAT3 No.23, RT.11/RW.6, Menteng Atas, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12960',
+      subtitle: 'Jl. Menteng Atas BARAT3 No.23, RT.11/RW.6, Kecamatan Setiabudi, Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12960',
       imageUrl: 'images/L_iconWWE.jpg',
       onPressed: () {
         
@@ -64,13 +64,20 @@ class Mylocation extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 86, 112, 126),
         appBar: AppBar(
-          title: Text('Location WWE - Daerah DKI Jakarta'),
-          backgroundColor: Color.fromARGB(255, 255, 0, 93),
+          title: const Text(
+            'Location WWE - Daerah DKI Jakarta',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: const Color.fromARGB(255, 230, 75, 3),
         actions: [
           //buttonBack
         IconButton(
-          icon: const Icon(Icons.logout),
+          icon: const Icon(
+            Icons.logout,
+            color: Colors.white,
+            ),
           onPressed: () {
             // Logika untuk kembali ke layar sebelumnya
             Navigator.of(context).pop();
@@ -81,7 +88,13 @@ class Mylocation extends StatelessWidget {
         body: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
-            return CustomListItemWidget(item: items[index]);
+            return Column(
+              children: [
+                const SizedBox(height: 15),
+                CustomListItemWidget(item: items[index]),
+                const SizedBox(height: 10), // Tambahkan SizedBox di sini untuk memberikan ruang
+              ],
+            );
           },
         ),
       ),
@@ -97,12 +110,12 @@ class CustomListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.fromARGB(255, 86, 112, 126),
+      color: Colors.white,
       child: ListTile(
-        contentPadding: EdgeInsets.all(30.0),
+        contentPadding: EdgeInsets.all(15),
         leading: Container(
-          width: 80.0,
-          height: 80.0,
+          width: 60.0,
+          height: 60.0,
           child: Image.asset(
             item.imageUrl,
             fit: BoxFit.fill,
@@ -119,9 +132,13 @@ class CustomListItemWidget extends StatelessWidget {
         trailing: ElevatedButton(
           onPressed: item.onPressed, 
           style: ElevatedButton.styleFrom(
-            primary: Colors.pink, 
+            primary: const Color.fromARGB(255, 230, 75, 3), 
           ),
-          child: Text('Go To Maps >'),
+          child: const Text(
+            'Go To Maps >',
+            style: TextStyle(color: Colors.white),
+          
+          ),
           
         ),
       ),
