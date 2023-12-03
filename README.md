@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-## Getting Started
+## Restaurant Menu and Order Apps
 
 1. Daflah Tsany Gusra (535220177)
 2. Kenneth Marlon Tan (535220183)
